@@ -5,8 +5,8 @@ class Response extends AppModel {
 	var $validate = array(
 		'user_id' => array('numeric'),
 		'song_id' => array('numeric'),
-		'instrumentation' => array('maxlength'),
-		'texture' => array('maxlength')
+		//'instrumentation' => array('maxlength', 255),
+		//'texture' => array('maxlength', 255)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
