@@ -6,7 +6,10 @@ class ResponsesController extends AppController {
 
 	function index() {
 		$this->Response->recursive = 0;
-		$this->set('responses', $this->paginate());
+    $info = $this->paginate();
+    $this->attachMp3List( $info );
+    $info = $this->filterByCurrentUser( $info );
+		$this->set('responses', $info);
 	}
 
 	function view($id = null) {
@@ -70,5 +73,34 @@ class ResponsesController extends AppController {
 		}
 	}
 
+  function beforeFilter() {
+    //pr( $this->Session->read('Auth') );
+    //$this->params['user'] = $this->Session->read('Auth.User') ;
+    //pr( $this->params );
+    //pr( $this->Response );
+  }
+
+  function filterByCurrentUser( $responses ) {
+    $returnArray = array();
+    foreach( $responses as $key=>$response ) {
+      if( $response['Response']['user_id'] 
+        == $this->Session->read('Auth.User.id') ) {
+          $returnArray[] = $response;
+        }
+    }
+    return $returnArray;
+  }
+
+  function attachMp3List( &$responses ) {
+    $returnArray = array();
+    foreach( $responses as $key=>$response ) {
+      $recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
+      $urls = array();
+      foreach( $recordings as $recording ) {
+        $urls[] = $recording['Recording']['url'];
+      }
+      $responses[$key]['Song']['mp3list'] = implode(",", $urls);
+    }
+  }
 }
 ?>

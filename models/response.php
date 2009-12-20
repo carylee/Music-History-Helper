@@ -48,5 +48,12 @@ class Response extends AppModel {
 		)
 	);
 
+ /* function beforeFind( $queryData ) {
+    echo $session->read('Auth.User.id');
+    pr( $this->Auth->user() );
+    $queryData['conditions'] = array('User.id' => 1);
+    pr($queryData);
+ }*/
+
 }
 ?>
