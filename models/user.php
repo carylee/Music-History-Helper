@@ -4,7 +4,7 @@ class User extends AppModel {
 	var $name = 'User';
 	var $validate = array(
 		'username' => array('email'),
-		'password' => array('between'),
+		'password' => array('between', 5, 15),
 		'verified' => array('boolean')
 	);
 
