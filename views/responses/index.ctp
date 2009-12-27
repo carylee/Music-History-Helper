@@ -19,6 +19,7 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('notes');?></th>
 	<th><?php echo $paginator->sort('created');?></th>
 	<th><?php echo $paginator->sort('modified');?></th>
+  <th>Mp3s</th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -63,6 +64,9 @@ foreach ($responses as $response):
 		<td>
 			<?php echo $response['Response']['modified']; ?>
 		</td>
+    <td>
+      <?php echo $response['Song']['mp3list']; ?>
+    </td>
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action' => 'view', $response['Response']['id'])); ?>
 			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $response['Response']['id'])); ?>

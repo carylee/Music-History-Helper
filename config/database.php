@@ -82,8 +82,8 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'carylee_mush',
-		'password' => 'istbnt2tb2nw',
+		'login' => 'root',
+		'password' => 'root',
 		'database' => 'carylee_mush',
 		'prefix' => '',
 	);
