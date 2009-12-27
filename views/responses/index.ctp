@@ -1,5 +1,6 @@
-<?php $javascript->link('audio-player', false);
-$javascript->link('audio-config', false); ?>
+<?php 
+$player->addjs();
+?>
 <div class="responses index">
 <h2><?php __('Responses');?></h2>
 <p>
