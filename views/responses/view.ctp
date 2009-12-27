@@ -1,7 +1,9 @@
 <?php 
 $javascript->link("audio-player", false);
+$javascript->link("audio-config", false);
 ?>
 <div class="responses view">
+<?php echo $player->embed($response['Song']['mp3list']); ?>
 <h2><?php  __('Response');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
