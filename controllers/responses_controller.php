@@ -6,7 +6,7 @@ class ResponsesController extends AppController {
 	function index() {
 		$this->Response->recursive = 0;
     $info = $this->paginate();
-    $this->attachMp3List( $info );
+    $this->attachMp3Lists( $info );
     $info = $this->filterByCurrentUser( $info );
 		$this->set('responses', $info);
 	}
@@ -16,7 +16,10 @@ class ResponsesController extends AppController {
 			$this->Session->setFlash(__('Invalid Response.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->set('response', $this->Response->read(null, $id));
+    $this->attachMp3Lists( $info );
+    $info = $this->Response->read(null, $id);
+    $this->attachMp3Lists( $info );
+		$this->set('response', $info );
 	}
 
 	function add() {
@@ -91,16 +94,27 @@ class ResponsesController extends AppController {
     return $returnArray;
   }
 
-  function attachMp3List( &$responses ) {
+  function attachMp3Lists( &$responses ) {
     $returnArray = array();
-    foreach( $responses as $key=>$response ) {
-      $recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
+    foreach( $responses as $key=>&$response ) {
+      /*$recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
       $urls = array();
       foreach( $recordings as $recording ) {
         $urls[] = $recording['Recording']['url'];
       }
-      $responses[$key]['Song']['mp3list'] = implode(",", $urls);
+      //$responses[$key]['Song']['mp3list'] = implode(",", $urls);
+      $response['Song']['mp3list'] = implode(",", $urls);*/
+      $this->attachMp3List( $response );
     }
+  }
+
+  function attachMp3List( &$response ) {
+    $recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
+    $urls = array();
+    foreach( $recordings as $recording ) {
+      $urls[] = $recording['Recording']['url'];
+    }
+    $response['Song']['mp3list'] =  implode(",", $urls);
   }
 }
 ?>
