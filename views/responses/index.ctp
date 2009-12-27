@@ -65,7 +65,7 @@ foreach ($responses as $response):
 			<?php echo $response['Response']['modified']; ?>
 		</td>
     <td>
-      <?php echo $response['Song']['mp3list']; ?>
+      <?php echo $player->embed($response['Song']['mp3list']); ?>
     </td>
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action' => 'view', $response['Response']['id'])); ?>

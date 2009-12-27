@@ -7,7 +7,10 @@ class PlayerHelper extends AppHelper {
     $embedCode .= "AudioPlayer.embed(\"audioplayer_$id\", ";
     $embedCode .= "{soundFile: \"" . $songPath . $urlList . "\"});\n";
     $embedCode .= "</script>";
-    return $this->ouput($embedCode);
+    return $this->output("<p id=\"audioplayer_$id\">Flash disabled</p>
+      <script type=\"text/javascript\">
+      AudioPlayer.embed(\"audioplayer_$id\",{soundFile: \"$songPath$urlList\"});
+      </script>");
   }
 }
 ?>
