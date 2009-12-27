@@ -1,3 +1,6 @@
+<?php 
+$javascript->link("audio-player", false);
+?>
 <div class="responses view">
 <h2><?php  __('Response');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>

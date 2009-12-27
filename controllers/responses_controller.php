@@ -1,8 +1,7 @@
 <?php
 class ResponsesController extends AppController {
-
 	var $name = 'Responses';
-	var $helpers = array('Html', 'Form');
+	var $helpers = array('Html', 'Form', 'Javascript', 'Player');
 
 	function index() {
 		$this->Response->recursive = 0;
