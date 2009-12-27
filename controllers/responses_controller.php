@@ -81,6 +81,7 @@ class ResponsesController extends AppController {
   }
 
   function filterByCurrentUser( $responses ) {
+    // This is probably inefficient, but I haven't figured out a better way yet
     $returnArray = array();
     foreach( $responses as $key=>$response ) {
       if( $response['Response']['user_id'] 
