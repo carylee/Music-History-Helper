@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* SongsController Test cases generated on: 2009-12-20 13:12:14 : 1261336334*/
+/* SongsController Test cases generated on: 2009-12-28 00:15:05 : 1261977305*/
 App::import('Controller', 'Songs');
 
 class TestSongs extends SongsController {

@@ -66,5 +66,13 @@ class UsersController extends AppController {
 		}
 	}
 
+  function checkUsersOwnRecord($recordId = null) {
+    if( $this->Auth->user('id') == $recordId ){
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
 }
 ?>
