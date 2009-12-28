@@ -108,12 +108,14 @@ class ResponsesController extends AppController {
   }
 
   function attachMp3List( &$response ) {
+    $dirPath = "/staticmusic/";
     $recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
     $urls = array();
     foreach( $recordings as $recording ) {
-      $urls[] = $recording['Recording']['url'];
+      $urls[] = $dirPath . $recording['Recording']['url'];
     }
     $response['Song']['mp3list'] =  implode(",", $urls);
+    //$response['Song']['mp3list'] =  $urls;
   }
 }
 ?>

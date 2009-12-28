@@ -4,21 +4,23 @@ class PlayerHelper extends AppHelper {
   function addjs() {
     $swf = '/cakephp/flash/player.swf';
     $this->Javascript->link('audio-player', false);
-    $this->Javascript->codeBlock("AudioPlayer.setup(\"$swf\", { width: 200 });",
+    $this->Javascript->codeBlock("AudioPlayer.setup(\"$swf\", { 
+      width: 200,
+      transparentpagebg: \"yes\",
+      });",
       array( 'inline' => false ));
   }
 
   // This should be changed to use codeBlock
   function embed( $urlList, $id=1 ) {
-    $songPath = "/Users/cary/Music/";
-    $embedCode = "<p id=\"audioplayer_$id\">Flash disabled</p>\n";
-    $embedCode .= "<script type=\"text/javascript\">\n";
-    $embedCode .= "AudioPlayer.embed(\"audioplayer_$id\", ";
-    $embedCode .= "{soundFile: \"" . $songPath . $urlList . "\"});\n";
-    $embedCode .= "</script>";
+    //$songPath = "/staticmusic/";
+    $urlList = $this->Javascript->escapeString($urlList);
+
+    //foreach 
+
     return $this->output("<p id=\"audioplayer_$id\">Flash disabled</p>
       <script type=\"text/javascript\">
-      AudioPlayer.embed(\"audioplayer_$id\",{soundFile: \"$songPath$urlList\"});
+      AudioPlayer.embed(\"audioplayer_$id\",{soundFile: \"$urlList\"});
       </script>");
   }
 }
