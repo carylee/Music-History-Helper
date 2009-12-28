@@ -16,9 +16,8 @@ class ResponsesController extends AppController {
 			$this->Session->setFlash(__('Invalid Response.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-    $this->attachMp3Lists( $info );
     $info = $this->Response->read(null, $id);
-    $this->attachMp3Lists( $info );
+    $this->attachMp3List( $info );
 		$this->set('response', $info );
 	}
 

@@ -2,8 +2,9 @@
 class PlayerHelper extends AppHelper {
   var $helpers = array('Javascript');
   function addjs() {
+    $swf = '/cakephp/flash/player.swf';
     $this->Javascript->link('audio-player', false);
-    $this->Javascript->codeBlock("AudioPlayer.setup(\"/flash/player.swf\", { width: 290 });",
+    $this->Javascript->codeBlock("AudioPlayer.setup(\"$swf\", { width: 200 });",
       array( 'inline' => false ));
   }
 

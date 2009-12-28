@@ -1,6 +1,5 @@
 <?php 
-$javascript->link("audio-player", false);
-$javascript->link("audio-config", false);
+$player->addjs();
 ?>
 <div class="responses view">
 <?php echo $player->embed($response['Song']['mp3list']); ?>
