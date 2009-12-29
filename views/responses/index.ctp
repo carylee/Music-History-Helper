@@ -19,9 +19,9 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('language_id');?></th>
 	<th><?php echo $paginator->sort('instrumentation');?></th>
 	<th><?php echo $paginator->sort('texture');?></th>
-	<th><?php echo $paginator->sort('notes');?></th>
-	<th><?php echo $paginator->sort('created');?></th>
-	<th><?php echo $paginator->sort('modified');?></th>
+	<!--<th><?php //echo $paginator->sort('notes');?></th>
+	<th><?php //echo $paginator->sort('created');?></th>
+	<th><?php //echo $paginator->sort('modified');?></th>-->
   <th>Mp3s</th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
@@ -58,15 +58,15 @@ foreach ($responses as $response):
 		<td>
 			<?php echo $response['Response']['texture']; ?>
 		</td>
-		<td>
-			<?php echo $response['Response']['notes']; ?>
+		<!--<td>
+			<?php //echo $response['Response']['notes']; ?>
 		</td>
 		<td>
-			<?php echo $response['Response']['created']; ?>
+			<?php //echo $response['Response']['created']; ?>
 		</td>
 		<td>
-			<?php echo $response['Response']['modified']; ?>
-		</td>
+			<?php //echo $response['Response']['modified']; ?>
+		</td>-->
     <td>
       <?php echo $player->embed($response['Song']['mp3list'], $response['Response']['id']); ?>
     </td>
