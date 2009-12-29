@@ -4,10 +4,14 @@ class ResponsesController extends AppController {
 	var $helpers = array('Html', 'Form', 'Javascript', 'Player');
 
 	function index() {
+    $this->paginate = array(
+      'conditions' => array(
+        'Response.user_id' => $this->Session->read('Auth.User.id') )
+      );
 		$this->Response->recursive = 0;
     $info = $this->paginate();
     $this->attachMp3Lists( $info );
-    $info = $this->filterByCurrentUser( $info );
+    //$info = $this->filterByCurrentUser( $info );
 		$this->set('responses', $info);
 	}
 
@@ -73,6 +77,16 @@ class ResponsesController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
+
+  function findForUser( $userId = 0 ) {
+    if( $userId == 0 ) {
+      $userId = $this->Session->read('Auth.User.id');
+    }
+    $responses = $this->Response->find('all', array('conditions' =>
+      array('Response.user_id' => $userId)
+    ));
+    return $responses;
+  }
 
   function beforeFilter() {
     //pr( $this->Session->read('Auth') );
