@@ -7,7 +7,7 @@ class ResponsesController extends AppController {
 	function index() {
     $this->paginate = array(
       'conditions' => array(
-        'Response.user_id' => $this->Session->read('Auth.User.id') );
+        'Response.user_id' => $this->Session->read('Auth.User.id') )
       );
 		$this->Response->recursive = 0;
     $info = $this->paginate();
@@ -36,7 +36,11 @@ class ResponsesController extends AppController {
     $this->filteredIndex( 'Genre.name', $genre, 'responses' );
   }
 
-  function filteredIndex( $field, $name, $setname ) {
+  function language( $language=null ) {
+    $this->filteredIndex( 'Language.name', $language );
+  }
+
+  function filteredIndex( $field, $name, $setname='responses' ) {
     if(!$name) {
       $err = "Invalid $field.";
       $this->Session->setFlash(__($err, true));
@@ -47,7 +51,7 @@ class ResponsesController extends AppController {
         'Response.user_id' => $this->Session->read('Auth.User.id'),
         $field => $name ) );
     $this->Response->recursive = 0;
-    $info - $this->paginate();
+    $info = $this->paginate();
     $this->attachMp3Lists( $info );
     $this->set($setname, $info);
   }
