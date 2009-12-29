@@ -3,6 +3,7 @@ class ResponsesController extends AppController {
 	var $name = 'Responses';
 	var $helpers = array('Html', 'Form', 'Javascript', 'Player');
   var $uses = array('Response', 'User');
+//  var $actsAs = array('Containable');
 
 	function index() {
     $conditions = array( 'Response.user_id' => $this->Session->read('Auth.User.id') );
@@ -18,11 +19,15 @@ class ResponsesController extends AppController {
     if(!empty($this->passedArgs['language'])) {
       $conditions['Language.name'] = $this->passedArgs['language'];
     }
+    $this->Response->Behaviors->attach('Containable');
     $this->paginate = array(
+      'contain' => array('Song', 'Song.Composer', 'Genre', 'Period', 'Language'),
       'conditions' => $conditions,
+      'recursive' => 1,
       );
-		$this->Response->recursive = 0;
+		//$this->Response->recursive = 0;
     $info = $this->paginate();
+    //pr($info);
     $this->attachMp3Lists( $info );
     //$info = $this->filterByCurrentUser( $info );
 		$this->set('responses', $info);
