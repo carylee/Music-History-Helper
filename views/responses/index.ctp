@@ -12,8 +12,9 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('user_id');?></th>
+	<!--<th><?php// echo $paginator->sort('user_id');?></th>-->
 	<th><?php echo $paginator->sort('song_id');?></th>
+	<th><?php echo $paginator->sort('composer_id');?></th>
 	<th><?php echo $paginator->sort('genre_id');?></th>
 	<th><?php echo $paginator->sort('period_id');?></th>
 	<th><?php echo $paginator->sort('language_id');?></th>
@@ -37,11 +38,14 @@ foreach ($responses as $response):
 		<td>
 			<?php echo $response['Response']['id']; ?>
 		</td>
-		<td>
-			<?php echo $html->link($response['User']['id'], array('controller' => 'users', 'action' => 'view', $response['User']['id'])); ?>
-		</td>
+		<!--<td>
+			<?php //echo $html->link($response['User']['id'], array('controller' => 'users', 'action' => 'view', $response['User']['id'])); ?>
+		</td>-->
 		<td>
 			<?php echo $html->link($response['Song']['title'], array('controller' => 'songs', 'action' => 'view', $response['Song']['id'])); ?>
+		</td>
+		<td>
+			<?php echo $html->link($response['Song']['Composer']['name'], array('controller' => 'songs', 'action' => 'view', $response['Song']['Composer']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $html->link($response['Genre']['name'], array('controller' => 'genres', 'action' => 'view', $response['Genre']['id'])); ?>

@@ -4,6 +4,7 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	var $helpers = array('Html', 'Form');
 	var $components = array('Auth');
+  var $uses = array('User', 'Song', 'Response');
 
   function login() {
   }
@@ -12,7 +13,29 @@ class UsersController extends AppController {
     $this->redirect($this->Auth->logout());
   }
 
-	function index() {
+  function add() {
+    if( !empty($this->data)) {
+      if ($this->data['User']['password'] == $this->Auth->password($this->data['User']['password_confirm'])) {
+        $this->User->create();
+        $this->User->save($this->data);
+
+        $userId = $this->User->getLastInsertId(); // Get user id
+
+        // Add all songs to user's responses (empty)
+        $songs = $this->Song->find('list');
+        foreach( $songs as $song_id => $song ) {
+          $this->Response->create();
+          $row = array(
+            'user_id' => $userId,
+            'song_id' => $song_id,
+          );
+          $this->Response->save($row);
+        }
+      }
+    }
+  }
+
+	/*function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
@@ -64,7 +87,7 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('User deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
-	}
+  }*/
 
   function checkUsersOwnRecord($recordId = null) {
     if( $this->Auth->user('id') == $recordId ){
