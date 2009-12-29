@@ -5,9 +5,21 @@ class ResponsesController extends AppController {
   var $uses = array('Response', 'User');
 
 	function index() {
+    $conditions = array( 'Response.user_id' => $this->Session->read('Auth.User.id') );
+    if(!empty($this->passedArgs['genre'])) {
+      $conditions['Genre.name'] = $this->passedArgs['genre'];
+    }
+    if(!empty($this->passedArgs['composer'])) {
+      $conditions['Composer.name'] = $this->passedArgs['composer'];
+    }
+    if(!empty($this->passedArgs['period'])) {
+      $conditions['Period.name'] = $this->passedArgs['period'];
+    }
+    if(!empty($this->passedArgs['language'])) {
+      $conditions['Language.name'] = $this->passedArgs['language'];
+    }
     $this->paginate = array(
-      'conditions' => array(
-        'Response.user_id' => $this->Session->read('Auth.User.id') )
+      'conditions' => $conditions,
       );
 		$this->Response->recursive = 0;
     $info = $this->paginate();
