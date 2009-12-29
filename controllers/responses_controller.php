@@ -2,11 +2,12 @@
 class ResponsesController extends AppController {
 	var $name = 'Responses';
 	var $helpers = array('Html', 'Form', 'Javascript', 'Player');
+  var $uses = array('Response', 'User');
 
 	function index() {
     $this->paginate = array(
       'conditions' => array(
-        'Response.user_id' => $this->Session->read('Auth.User.id') )
+        'Response.user_id' => $this->Session->read('Auth.User.id') );
       );
 		$this->Response->recursive = 0;
     $info = $this->paginate();
@@ -14,6 +15,42 @@ class ResponsesController extends AppController {
     //$info = $this->filterByCurrentUser( $info );
 		$this->set('responses', $info);
 	}
+
+  /*function genre( $genre=null ) {
+    if(!$genre) {
+      $this->Session->setFlash(__('Invalid Genre.', true));
+      $this->redirect(array('action'=>'index'));
+    }
+    $this->paginate = array(
+      'conditions' => array(
+        'Response.user_id' => $this->Session->read('Auth.User.id'),
+        'Genre.name' => $genre ) );
+		$this->Response->recursive = 0;
+    $info = $this->paginate();
+    $this->attachMp3Lists( $info );
+    //$info = $this->filterByCurrentUser( $info );
+		$this->set('responses', $info);
+  }*/
+
+  function genre( $genre=null ) {
+    $this->filteredIndex( 'Genre.name', $genre, 'responses' );
+  }
+
+  function filteredIndex( $field, $name, $setname ) {
+    if(!$name) {
+      $err = "Invalid $field.";
+      $this->Session->setFlash(__($err, true));
+      $this->redirect(array('action'=>'index'));
+    }
+    $this->paginate = array(
+      'conditions' => array(
+        'Response.user_id' => $this->Session->read('Auth.User.id'),
+        $field => $name ) );
+    $this->Response->recursive = 0;
+    $info - $this->paginate();
+    $this->attachMp3Lists( $info );
+    $this->set($setname, $info);
+  }
 
 	function view($id = null) {
 		if (!$id) {
