@@ -12,7 +12,6 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
-	<!--<th><?php// echo $paginator->sort('user_id');?></th>-->
 	<th><?php echo $paginator->sort('Song', 'Song.title');?></th>
 	<th><?php echo $paginator->sort('composer_id');?></th>
 	<th><?php echo $paginator->sort('Genre', 'Genre.name');?></th>
@@ -20,9 +19,6 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('language_id');?></th>
 	<th><?php echo $paginator->sort('instrumentation');?></th>
 	<th><?php echo $paginator->sort('texture');?></th>
-	<!--<th><?php //echo $paginator->sort('notes');?></th>
-	<th><?php //echo $paginator->sort('created');?></th>
-	<th><?php //echo $paginator->sort('modified');?></th>-->
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -37,9 +33,6 @@ foreach ($responses as $response):
 		<td>
 			<?php echo $response['Response']['id']; ?>
 		</td>
-		<!--<td>
-			<?php //echo $html->link($response['User']['id'], array('controller' => 'users', 'action' => 'view', $response['User']['id'])); ?>
-		</td>-->
 		<td>
 			<?php echo $html->link($response['Song']['title'], array('controller' => 'songs', 'action' => 'view', $response['Song']['id'])); ?>
       <br />
@@ -63,15 +56,6 @@ foreach ($responses as $response):
 		<td>
 			<?php echo $response['Response']['texture']; ?>
 		</td>
-		<!--<td>
-			<?php //echo $response['Response']['notes']; ?>
-		</td>
-		<td>
-			<?php //echo $response['Response']['created']; ?>
-		</td>
-		<td>
-			<?php //echo $response['Response']['modified']; ?>
-		</td>-->
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action' => 'view', $response['Response']['id'])); ?>
 			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $response['Response']['id'])); ?>
