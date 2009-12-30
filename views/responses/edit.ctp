@@ -1,6 +1,8 @@
 <?php 
 $javascript->link('prototype', false);
 $javascript->link('scriptaculous', false);
+echo $javascript->link('effects');
+echo $javascript->link('controls');
 $player->addjs(); 
 ?>
 <div class="responses form">
@@ -13,11 +15,31 @@ $player->addjs();
 	<?php
 		echo $form->input('id');
 		//echo $form->input('genre');
-    echo $ajax->autoComplete('genre', '/genres/autoComplete');
-		echo $form->input('period');
-		echo $form->input('language');
-		echo $form->input('instrumentation');
-		echo $form->input('texture');
+  ?>
+    <div class="input text">
+      <label for="Genre">Genre</label>
+      <?php echo $ajax->autoComplete('genre', '/genres/autoComplete'); ?>
+    </div>
+    <div class="input text">
+      <label for="Period">Period</label>
+      <?php echo $ajax->autoComplete('period', '/periods/autoComplete'); ?>
+    </div>
+    <div class="input text">
+      <label for="Language">Language</label>
+      <?php echo $ajax->autoComplete('language', '/languages/autoComplete'); ?>
+    </div>
+    <div class="input text">
+      <label for="Instrumentation">Instrumentation</label>
+      <?php echo $ajax->autoComplete('instrumentation', '/instrumentations/autoComplete'); ?>
+    </div>
+    <div class="input text">
+      <label for="Texture">Texture</label>
+      <?php echo $ajax->autoComplete('texture', '/textures/autoComplete'); ?>
+    </div>
+<?php
+		//echo $form->input('language');
+		//echo $form->input('instrumentation');
+		//echo $form->input('texture');
 		echo $form->input('notes');
 	?>
 	</fieldset>
