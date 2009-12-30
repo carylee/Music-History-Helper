@@ -7,6 +7,7 @@ class UsersController extends AppController {
   var $uses = array('User', 'Song', 'Response');
 
   function login() {
+    //$this->redirect(array('controller' => 'responses', 'action'=>'index'));
   }
 
   function logout() {

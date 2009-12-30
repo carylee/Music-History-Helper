@@ -11,7 +11,7 @@ class ResponsesController extends AppController {
       $conditions['Genre.name'] = $this->passedArgs['genre'];
     }
     if(!empty($this->passedArgs['composer'])) {
-      $conditions['Composer.name'] = $this->passedArgs['composer'];
+      $conditions['Song.Composer.name'] = $this->passedArgs['composer'];
     }
     if(!empty($this->passedArgs['period'])) {
       $conditions['Period.name'] = $this->passedArgs['period'];
@@ -29,11 +29,11 @@ class ResponsesController extends AppController {
     $info = $this->paginate();
     //pr($info);
     $this->attachMp3Lists( $info );
-    //$info = $this->filterByCurrentUser( $info );
 		$this->set('responses', $info);
 	}
 
-  /*function genre( $genre=null ) {
+  // Depricated
+  /* function genre( $genre=null ) {
     if(!$genre) {
       $this->Session->setFlash(__('Invalid Genre.', true));
       $this->redirect(array('action'=>'index'));
@@ -49,11 +49,13 @@ class ResponsesController extends AppController {
 		$this->set('responses', $info);
   }*/
 
-  function genre( $genre=null ) {
+  // Depricated
+  /*function genre( $genre=null ) {
     $this->filteredIndex( 'Genre.name', $genre, 'responses' );
-  }
+  }*/
 
-  function language( $language=null ) {
+  //depricated
+  /*function language( $language=null ) {
     $this->filteredIndex( 'Language.name', $language );
   }
 
@@ -71,7 +73,7 @@ class ResponsesController extends AppController {
     $info = $this->paginate();
     $this->attachMp3Lists( $info );
     $this->set($setname, $info);
-  }
+  }*/
 
 	function view($id = null) {
 		if (!$id) {
@@ -117,8 +119,10 @@ class ResponsesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Response->read(null, $id);
 		}
-		$users = $this->Response->User->find('list');
-		$songs = $this->Response->Song->find('list');
+    $info = $this->Response->Song->find('first');
+    $this->attachMp3List( $info );
+		$this->set('response', $info);
+    //pr($info);
 		$genres = $this->Response->Genre->find('list');
 		$periods = $this->Response->Period->find('list');
 		$languages = $this->Response->Language->find('list');

@@ -1,11 +1,13 @@
+<?php $player->addjs(); ?>
 <div class="responses form">
 <?php echo $form->create('Response');?>
 	<fieldset>
  		<legend><?php __('Edit Response');?></legend>
+    <h3><?php echo $response['Song']['title'];?></h3>
+    <h4><?php echo $response['Composer']['name'];?></h4>
+    <?php echo $player->embed($response['Song']['mp3list']); ?>
 	<?php
 		echo $form->input('id');
-		echo $form->input('user_id');
-		echo $form->input('song_id');
 		echo $form->input('genre_id');
 		echo $form->input('period_id');
 		echo $form->input('language_id');
