@@ -5,7 +5,6 @@ class UsersController extends AppController {
 	var $helpers = array('Html', 'Form');
 	var $components = array('Auth');
   var $uses = array('User', 'Song', 'Response');
-  var $recursive = -1;
 
   function beforeFilter() {
     $this->Auth->allow('add', 'login');
