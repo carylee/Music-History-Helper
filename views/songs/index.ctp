@@ -10,7 +10,7 @@ echo $paginator->counter(array(
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('title');?></th>
-	<th><?php echo $paginator->sort('composer_id');?></th>
+	<th><?php echo $paginator->sort('composer');?></th>
 	<th><?php echo $paginator->sort('created');?></th>
 	<th><?php echo $paginator->sort('modified');?></th>
 	<th><?php echo $paginator->sort('nawm');?></th>
@@ -32,7 +32,7 @@ foreach ($songs as $song):
 			<?php echo $song['Song']['title']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($song['Composer']['name'], array('controller' => 'composers', 'action' => 'view', $song['Composer']['id'])); ?>
+			<?php echo $song['Song']['composer']; ?>
 		</td>
 		<td>
 			<?php echo $song['Song']['created']; ?>

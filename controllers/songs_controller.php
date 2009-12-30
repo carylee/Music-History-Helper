@@ -5,6 +5,14 @@ class SongsController extends AppController {
 	var $helpers = array('Html', 'Form', 'Player');
   var $uses = array('Song', 'Response');
 
+  function beforeFilter() {
+    $this->Auth->authorize = 'controller';
+  }
+
+  function isAuthorized() {
+    return ($this->Session->read('Auth.User.id') == 17);
+  }
+
 	function index() {
 		$this->Song->recursive = 0;
     $songs = $this->paginate();

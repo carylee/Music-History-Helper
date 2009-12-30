@@ -115,21 +115,17 @@ class ResponsesController extends AppController {
   }
 
   function isAuthorized() {
-    //pr($this);
-    //pr($this->params);
     $restrictedActions = array('view', 'edit');
     if(in_array($this->params['action'], $restrictedActions)) {
-      //$response = $this->Response->findById( $this->params->pass[0] );
       $response = $this->Response->find('first', 
         array('conditions'=>array(
           'Response.id'=>$this->params['pass'][0]),
         'recursive' => -1,
         'fields' => array('user_id')));
-      //pr($response);
       return ($this->Session->read('Auth.User.id') == $response['Response']['user_id']);
-    }
-    else
+    } else {
       return true;
+    }
   }
 
   function filterByCurrentUser( $responses ) {
