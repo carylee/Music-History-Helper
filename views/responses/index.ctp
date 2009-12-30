@@ -34,7 +34,7 @@ foreach ($responses as $response):
 			<?php echo $response['Response']['id']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Song']['title'], array('controller' => 'songs', 'action' => 'view', $response['Song']['id'])); ?>
+			<?php echo $html->link($response['Song']['title'], array('controller' => 'responses', 'action' => 'view', $response['Response']['id'])); ?>
       <br />
       <?php echo $player->embed($response['Song']['mp3list'], $response['Response']['id']); ?>
 		</td>
