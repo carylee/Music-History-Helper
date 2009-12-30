@@ -487,4 +487,9 @@ div.auto_complete    {
   margin           :0px;
   padding          :0px;
 } 
+div.auto_complete li {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-left: 0px;
+}
 li.selected    { background-color: #ffb; }

@@ -5,6 +5,7 @@ class UsersController extends AppController {
 	var $helpers = array('Html', 'Form');
 	var $components = array('Auth');
   var $uses = array('User', 'Song', 'Response');
+  var $recursive = -1;
 
   function beforeFilter() {
     $this->Auth->allow('add', 'login');
@@ -39,6 +40,14 @@ class UsersController extends AppController {
         }
       }
     }
+  }
+
+  function changePassword() {
+    $userId = $this->User->findById( $this->Auth->user('id'));
+    $user = $this->Auth->user();
+    pr($userId);
+    //if( !empty($this->data)) {
+      //if ($this->data['User']['old_password'] == 
   }
 
 	/*function index() {
