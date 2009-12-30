@@ -6,6 +6,11 @@ class UsersController extends AppController {
 	var $components = array('Auth');
   var $uses = array('User', 'Song', 'Response');
 
+  function beforeFilter() {
+    $this->Auth->allow('add', 'login');
+
+  }
+
   function login() {
     //$this->redirect(array('controller' => 'responses', 'action'=>'index'));
   }

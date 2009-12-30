@@ -6,6 +6,10 @@ class ResponsesController extends AppController {
   var $uses = array('Response', 'User');
 //  var $actsAs = array('Containable');
 
+  function beforeFilter() {
+    $this->Auth->allow('');
+  }
+
 	function index() {
     $conditions = array( 'Response.user_id' => $this->Session->read('Auth.User.id') );
     if(!empty($this->passedArgs['genre'])) {
@@ -107,13 +111,6 @@ class ResponsesController extends AppController {
       array('Response.user_id' => $userId)
     ));
     return $responses;
-  }
-
-  function beforeFilter() {
-    //pr( $this->Session->read('Auth') );
-    //$this->params['user'] = $this->Session->read('Auth.User') ;
-    //pr( $this->params );
-    //pr( $this->Response );
   }
 
   function filterByCurrentUser( $responses ) {
