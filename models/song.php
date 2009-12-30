@@ -8,15 +8,6 @@ class Song extends AppModel {
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
-		'Composer' => array(
-			'className' => 'Composer',
-			'foreignKey' => 'composer_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
 
 	var $hasMany = array(
 		'Recording' => array(
