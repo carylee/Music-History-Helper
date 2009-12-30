@@ -1,7 +1,7 @@
 <?php
 class ResponsesController extends AppController {
 	var $name = 'Responses';
-	var $helpers = array('Html', 'Form', 'Javascript', 'Player');
+	var $helpers = array('Html', 'Ajax', 'Form', 'Javascript', 'Player');
   var $uses = array('Response', 'User');
 //  var $actsAs = array('Containable');
 

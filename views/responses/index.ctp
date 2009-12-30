@@ -1,5 +1,7 @@
 <?php 
 $player->addjs();
+$javascript->link('prototype');
+$javascript->link('scriptaculous');
 ?>
 <div class="responses index">
 <h2><?php __('Responses');?></h2>
