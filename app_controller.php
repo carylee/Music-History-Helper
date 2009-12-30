@@ -7,7 +7,7 @@ class AppController extends Controller {
     $this->Auth->authorize = 'controller';
     $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'users', 'action'=>'index');
-    $this->Auth->logoutRedirect = '/';
+    $this->Auth->logoutRedirect = array('controller'=>'responses', 'action'=>'index');
 
     //if( !isAuthorized() ){
       //$this->redirect->(

@@ -8,6 +8,7 @@ class ResponsesController extends AppController {
 
   function beforeFilter() {
     $this->Auth->allow('');
+    $this->Auth->authorize = 'controller';
   }
 
 	function index() {
@@ -49,7 +50,7 @@ class ResponsesController extends AppController {
 		$this->set('response', $info );
 	}
 
-	function add() {
+	/*function add() {
 		if (!empty($this->data)) {
 			$this->Response->create();
 			if ($this->Response->save($this->data)) {
@@ -59,13 +60,13 @@ class ResponsesController extends AppController {
 				$this->Session->setFlash(__('The Response could not be saved. Please, try again.', true));
 			}
 		}
-		/*$users = $this->Response->User->find('list');
+		$users = $this->Response->User->find('list');
 		$songs = $this->Response->Song->find('list');
 		$genres = $this->Response->Genre->find('list');
 		$periods = $this->Response->Period->find('list');
-    $languages = $this->Response->Language->find('list');*/
+    $languages = $this->Response->Language->find('list');
 		//$this->set(compact('users', 'songs', 'genres', 'periods', 'languages'));
-	}
+}*/
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -92,7 +93,7 @@ class ResponsesController extends AppController {
 		$this->set(compact('users','songs'));
 	}
 
-	function delete($id = null) {
+/*function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Response', true));
 			$this->redirect(array('action'=>'index'));
@@ -101,7 +102,7 @@ class ResponsesController extends AppController {
 			$this->Session->setFlash(__('Response deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
-	}
+}*/
 
   function findForUser( $userId = 0 ) {
     if( $userId == 0 ) {
@@ -111,6 +112,24 @@ class ResponsesController extends AppController {
       array('Response.user_id' => $userId)
     ));
     return $responses;
+  }
+
+  function isAuthorized() {
+    //pr($this);
+    //pr($this->params);
+    $restrictedActions = array('view', 'edit');
+    if(in_array($this->params['action'], $restrictedActions)) {
+      //$response = $this->Response->findById( $this->params->pass[0] );
+      $response = $this->Response->find('first', 
+        array('conditions'=>array(
+          'Response.id'=>$this->params['pass'][0]),
+        'recursive' => -1,
+        'fields' => array('user_id')));
+      //pr($response);
+      return ($this->Session->read('Auth.User.id') == $response['Response']['user_id']);
+    }
+    else
+      return true;
   }
 
   function filterByCurrentUser( $responses ) {
