@@ -7,17 +7,17 @@ $player->addjs();
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genre'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($response['Genre']['name'], array('controller' => 'genres', 'action' => 'view', $response['Genre']['id'])); ?>
+			<?php echo $html->link($response['Response']['genre'], array('controller' => 'responses', 'action' => 'index', 'genre'=>$response['Response']['genre'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Period'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($response['Period']['name'], array('controller' => 'periods', 'action' => 'view', $response['Period']['id'])); ?>
+			<?php echo $html->link($response['Response']['period'], array('controller' => 'responses', 'action' => 'index', 'period'=>$response['Response']['period'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Language'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($response['Language']['name'], array('controller' => 'languages', 'action' => 'view', $response['Language']['id'])); ?>
+			<?php echo $html->link($response['Response']['language'], array('controller' => 'languages', 'action' => 'view', 'language'=>$response['Response']['language'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Instrumentation'); ?></dt>
