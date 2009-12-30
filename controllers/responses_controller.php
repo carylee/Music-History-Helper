@@ -8,16 +8,16 @@ class ResponsesController extends AppController {
 	function index() {
     $conditions = array( 'Response.user_id' => $this->Session->read('Auth.User.id') );
     if(!empty($this->passedArgs['genre'])) {
-      $conditions['Genre.name'] = $this->passedArgs['genre'];
+      $conditions['genre LIKE'] = $this->passedArgs['genre'];
     }
     if(!empty($this->passedArgs['composer'])) {
       $conditions['Song.composer'] = $this->passedArgs['composer'];
     }
     if(!empty($this->passedArgs['period'])) {
-      $conditions['Period.name'] = $this->passedArgs['period'];
+      $conditions['period LIKE'] = $this->passedArgs['period'];
     }
     if(!empty($this->passedArgs['language'])) {
-      $conditions['Language.name'] = $this->passedArgs['language'];
+      $conditions['language LIKE'] = $this->passedArgs['language'];
     }
     if(!empty($this->passedArgs['instrumentation'])) {
       $conditions['instrumentation LIKE'] = '%' . $this->passedArgs['instrumentation'] . '%';
@@ -25,61 +25,14 @@ class ResponsesController extends AppController {
     if(!empty($this->passedArgs['texture'])) {
       $conditions['texture LIKE'] = '%' . $this->passedArgs['texture'] . '%';
     }
-    $this->Response->Behaviors->attach('Containable');
     $this->paginate = array(
-      'contain' => array('Song', 'Genre', 'Period', 'Language'),
       'conditions' => $conditions,
       'recursive' => 0,
       );
-		//$this->Response->recursive = 0;
     $info = $this->paginate();
-    //pr($info);
     $this->attachMp3Lists( $info );
 		$this->set('responses', $info);
 	}
-
-  // Depricated
-  /* function genre( $genre=null ) {
-    if(!$genre) {
-      $this->Session->setFlash(__('Invalid Genre.', true));
-      $this->redirect(array('action'=>'index'));
-    }
-    $this->paginate = array(
-      'conditions' => array(
-        'Response.user_id' => $this->Session->read('Auth.User.id'),
-        'Genre.name' => $genre ) );
-		$this->Response->recursive = 0;
-    $info = $this->paginate();
-    $this->attachMp3Lists( $info );
-    //$info = $this->filterByCurrentUser( $info );
-		$this->set('responses', $info);
-  }*/
-
-  // Depricated
-  /*function genre( $genre=null ) {
-    $this->filteredIndex( 'Genre.name', $genre, 'responses' );
-  }*/
-
-  //depricated
-  /*function language( $language=null ) {
-    $this->filteredIndex( 'Language.name', $language );
-  }
-
-  function filteredIndex( $field, $name, $setname='responses' ) {
-    if(!$name) {
-      $err = "Invalid $field.";
-      $this->Session->setFlash(__($err, true));
-      $this->redirect(array('action'=>'index'));
-    }
-    $this->paginate = array(
-      'conditions' => array(
-        'Response.user_id' => $this->Session->read('Auth.User.id'),
-        $field => $name ) );
-    $this->Response->recursive = 0;
-    $info = $this->paginate();
-    $this->attachMp3Lists( $info );
-    $this->set($setname, $info);
-  }*/
 
 	function view($id = null) {
 		if (!$id) {
@@ -101,12 +54,12 @@ class ResponsesController extends AppController {
 				$this->Session->setFlash(__('The Response could not be saved. Please, try again.', true));
 			}
 		}
-		$users = $this->Response->User->find('list');
+		/*$users = $this->Response->User->find('list');
 		$songs = $this->Response->Song->find('list');
 		$genres = $this->Response->Genre->find('list');
 		$periods = $this->Response->Period->find('list');
-		$languages = $this->Response->Language->find('list');
-		$this->set(compact('users', 'songs', 'genres', 'periods', 'languages'));
+    $languages = $this->Response->Language->find('list');*/
+		//$this->set(compact('users', 'songs', 'genres', 'periods', 'languages'));
 	}
 
 	function edit($id = null) {
@@ -125,16 +78,13 @@ class ResponsesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Response->read(null, $id);
 		}
-    $this->Response->recursive = 2;
-    $this->Response->Behaviors->attach('Containable');
-    $this->Response->contain('Song', 'Song.Composer', 'Language', 'Period', 'Genre');
+    $this->Response->recursive = 0;
+    //$this->Response->Behaviors->attach('Containable');
+    //$this->Response->contain('Song', 'Song.Composer', 'Language', 'Period', 'Genre');
     $info = $this->Response->findById($id);
     $this->attachMp3List( $info );
 		$this->set('response', $info);
-		$genres = $this->Response->Genre->find('list');
-		$periods = $this->Response->Period->find('list');
-		$languages = $this->Response->Language->find('list');
-		$this->set(compact('users','songs','genres','periods','languages'));
+		$this->set(compact('users','songs'));
 	}
 
 	function delete($id = null) {
