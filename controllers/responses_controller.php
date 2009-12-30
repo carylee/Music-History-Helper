@@ -11,7 +11,7 @@ class ResponsesController extends AppController {
       $conditions['Genre.name'] = $this->passedArgs['genre'];
     }
     if(!empty($this->passedArgs['composer'])) {
-      $conditions['Song.Composer.name'] = $this->passedArgs['composer'];
+      $conditions['Song.composer'] = $this->passedArgs['composer'];
     }
     if(!empty($this->passedArgs['period'])) {
       $conditions['Period.name'] = $this->passedArgs['period'];
@@ -19,11 +19,17 @@ class ResponsesController extends AppController {
     if(!empty($this->passedArgs['language'])) {
       $conditions['Language.name'] = $this->passedArgs['language'];
     }
+    if(!empty($this->passedArgs['instrumentation'])) {
+      $conditions['instrumentation LIKE'] = '%' . $this->passedArgs['instrumentation'] . '%';
+    }
+    if(!empty($this->passedArgs['texture'])) {
+      $conditions['texture LIKE'] = '%' . $this->passedArgs['texture'] . '%';
+    }
     $this->Response->Behaviors->attach('Containable');
     $this->paginate = array(
-      'contain' => array('Song', 'Song.Composer', 'Genre', 'Period', 'Language'),
+      'contain' => array('Song', 'Genre', 'Period', 'Language'),
       'conditions' => $conditions,
-      'recursive' => 1,
+      'recursive' => 0,
       );
 		//$this->Response->recursive = 0;
     $info = $this->paginate();

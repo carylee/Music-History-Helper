@@ -13,7 +13,7 @@ echo $paginator->counter(array(
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('Song', 'Song.title');?></th>
-	<th><?php echo $paginator->sort('composer_id');?></th>
+	<th><?php echo $paginator->sort('Composer', 'Song.composer');?></th>
 	<th><?php echo $paginator->sort('Genre', 'Genre.name');?></th>
 	<th><?php echo $paginator->sort('period_id');?></th>
 	<th><?php echo $paginator->sort('language_id');?></th>
@@ -39,7 +39,7 @@ foreach ($responses as $response):
       <?php echo $player->embed($response['Song']['mp3list'], $response['Response']['id']); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Song']['Composer']['name'], array('controller' => 'composers', 'action' => 'view', $response['Song']['Composer']['id'])); ?>
+			<?php echo $html->link($response['Song']['composer'], array_merge($this->passedArgs, array('composer'=>$response['Song']['composer']))); ?>
 		</td>
 		<td>
       <?php echo $html->link($response['Genre']['name'], array_merge($this->passedArgs, array('genre'=>$response['Genre']['name']))); ?>
@@ -48,7 +48,7 @@ foreach ($responses as $response):
 			<?php echo $html->link($response['Period']['name'], array_merge($this->passedArgs, array('period'=>$response['Period']['name']))); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Language']['name'], array('controller' => 'languages', 'action' => 'view', $response['Language']['id'])); ?>
+			<?php echo $html->link($response['Language']['name'], array_merge($this->passedArgs, array('language'=>$response['Language']['name']))); ?>
 		</td>
 		<td>
 			<?php echo $response['Response']['instrumentation']; ?>
@@ -57,7 +57,7 @@ foreach ($responses as $response):
 			<?php echo $response['Response']['texture']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action' => 'view', $response['Response']['id'])); ?>
+			<?php echo $html->link(__('Details', true), array('action' => 'view', $response['Response']['id'])); ?>
 			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $response['Response']['id'])); ?>
 			<?php //echo $html->link(__('Delete', true), array('action' => 'delete', $response['Response']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $response['Response']['id'])); ?>
 		</td>
