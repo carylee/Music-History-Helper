@@ -2,14 +2,9 @@
 $player->addjs();
 ?>
 <div class="responses view">
-<?php echo $player->embed($response['Song']['mp3list']); ?>
 <h2><?php  __($response['Song']['title']);?></h2>
+  <?php echo $player->embed($response['Song']['mp3list']); ?>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Song'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($response['Song']['title'], array('controller' => 'songs', 'action' => 'view', $response['Song']['id'])); ?>
-			&nbsp;
-		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genre'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $html->link($response['Genre']['name'], array('controller' => 'genres', 'action' => 'view', $response['Genre']['id'])); ?>
@@ -40,11 +35,6 @@ $player->addjs();
 			<?php echo $response['Response']['notes']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $response['Response']['created']; ?>
-			&nbsp;
-		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $response['Response']['modified']; ?>
@@ -55,9 +45,6 @@ $player->addjs();
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('Edit Response', true), array('action' => 'edit', $response['Response']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Response', true), array('action' => 'delete', $response['Response']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $response['Response']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Responses', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Response', true), array('action' => 'add')); ?> </li>
 		<li><?php echo $html->link(__('List Genres', true), array('controller' => 'genres', 'action' => 'index')); ?> </li>
 		<li><?php echo $html->link(__('New Genre', true), array('controller' => 'genres', 'action' => 'add')); ?> </li>
 		<li><?php echo $html->link(__('List Periods', true), array('controller' => 'periods', 'action' => 'index')); ?> </li>
