@@ -4,7 +4,7 @@
 	<fieldset>
  		<legend><?php __('Edit Response');?></legend>
     <h3><?php echo $response['Song']['title'];?></h3>
-    <h4><?php echo $response['Composer']['name'];?></h4>
+    <h4><?php echo $response['Song']['Composer']['name'];?></h4>
     <?php echo $player->embed($response['Song']['mp3list']); ?>
 	<?php
 		echo $form->input('id');

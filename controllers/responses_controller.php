@@ -119,10 +119,12 @@ class ResponsesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Response->read(null, $id);
 		}
-    $info = $this->Response->Song->find('first');
+    $this->Response->recursive = 2;
+    $this->Response->Behaviors->attach('Containable');
+    $this->Response->contain('Song', 'Song.Composer', 'Language', 'Period', 'Genre');
+    $info = $this->Response->findById($id);
     $this->attachMp3List( $info );
 		$this->set('response', $info);
-    //pr($info);
 		$genres = $this->Response->Genre->find('list');
 		$periods = $this->Response->Period->find('list');
 		$languages = $this->Response->Language->find('list');

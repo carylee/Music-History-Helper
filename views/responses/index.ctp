@@ -42,10 +42,10 @@ foreach ($responses as $response):
 			<?php echo $html->link($response['Song']['Composer']['name'], array('controller' => 'composers', 'action' => 'view', $response['Song']['Composer']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Genre']['name'], array('controller' => 'genres', 'action' => 'view', $response['Genre']['id'])); ?>
+      <?php echo $html->link($response['Genre']['name'], array_merge($this->passedArgs, array('genre'=>$response['Genre']['name']))); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Period']['name'], array('controller' => 'periods', 'action' => 'view', $response['Period']['id'])); ?>
+			<?php echo $html->link($response['Period']['name'], array_merge($this->passedArgs, array('period'=>$response['Period']['name']))); ?>
 		</td>
 		<td>
 			<?php echo $html->link($response['Language']['name'], array('controller' => 'languages', 'action' => 'view', $response['Language']['id'])); ?>
