@@ -1,4 +1,8 @@
-<?php $player->addjs(); ?>
+<?php 
+$javascript->link('prototype', false);
+$javascript->link('scriptaculous', false);
+$player->addjs(); 
+?>
 <div class="responses form">
 <?php echo $form->create('Response');?>
 	<fieldset>
@@ -8,7 +12,8 @@
     <?php echo $player->embed($response['Song']['mp3list']); ?>
 	<?php
 		echo $form->input('id');
-		echo $form->input('genre');
+		//echo $form->input('genre');
+    echo $ajax->autoComplete('genre', '/genres/autoComplete');
 		echo $form->input('period');
 		echo $form->input('language');
 		echo $form->input('instrumentation');

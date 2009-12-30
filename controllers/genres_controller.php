@@ -2,7 +2,7 @@
 class GenresController extends AppController {
 
 	var $name = 'Genres';
-	var $helpers = array('Html', 'Ajax', 'Form', 'Player');
+	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Player');
   var $uses = array('Response');
 
   function autoComplete() {
