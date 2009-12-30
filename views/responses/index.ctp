@@ -14,9 +14,9 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('Song', 'Song.title');?></th>
 	<th><?php echo $paginator->sort('Composer', 'Song.composer');?></th>
-	<th><?php echo $paginator->sort('Genre', 'Genre.name');?></th>
-	<th><?php echo $paginator->sort('period_id');?></th>
-	<th><?php echo $paginator->sort('language_id');?></th>
+	<th><?php echo $paginator->sort('genre');?></th>
+	<th><?php echo $paginator->sort('period');?></th>
+	<th><?php echo $paginator->sort('language');?></th>
 	<th><?php echo $paginator->sort('instrumentation');?></th>
 	<th><?php echo $paginator->sort('texture');?></th>
 	<th class="actions"><?php __('Actions');?></th>
@@ -42,13 +42,13 @@ foreach ($responses as $response):
 			<?php echo $html->link($response['Song']['composer'], array_merge($this->passedArgs, array('composer'=>$response['Song']['composer']))); ?>
 		</td>
 		<td>
-      <?php echo $html->link($response['Genre']['name'], array_merge($this->passedArgs, array('genre'=>$response['Genre']['name']))); ?>
+      <?php echo $html->link($response['Response']['genre'], array_merge($this->passedArgs, array('genre'=>$response['Response']['genre']))); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Period']['name'], array_merge($this->passedArgs, array('period'=>$response['Period']['name']))); ?>
+			<?php echo $html->link($response['Response']['period'], array_merge($this->passedArgs, array('period'=>$response['Response']['period']))); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Language']['name'], array_merge($this->passedArgs, array('language'=>$response['Language']['name']))); ?>
+			<?php echo $html->link($response['Response']['language'], array_merge($this->passedArgs, array('language'=>$response['Response']['language']))); ?>
 		</td>
 		<td>
 			<?php echo $response['Response']['instrumentation']; ?>
