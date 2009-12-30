@@ -5,16 +5,6 @@ $player->addjs();
 <?php echo $player->embed($response['Song']['mp3list']); ?>
 <h2><?php  __('Response');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<!--<dt<?php //if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php// if ($i++ % 2 == 0) echo $class;?>>
-			<?php// echo $response['Response']['id']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php// if ($i % 2 == 0) echo $class;?>><?php __('User'); ?></dt>
-		<dd<?php //if ($i++ % 2 == 0) echo $class;?>>
-			<?php //echo $html->link($response['User']['id'], array('controller' => 'users', 'action' => 'view', $response['User']['id'])); ?>
-			&nbsp;
-		</dd>-->
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Song'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $html->link($response['Song']['title'], array('controller' => 'songs', 'action' => 'view', $response['Song']['id'])); ?>
