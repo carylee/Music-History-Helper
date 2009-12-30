@@ -51,10 +51,10 @@ foreach ($responses as $response):
 			<?php echo $html->link($response['Response']['language'], array_merge($this->passedArgs, array('language'=>$response['Response']['language']))); ?>
 		</td>
 		<td>
-			<?php echo $response['Response']['instrumentation']; ?>
+			<?php echo $html->link($response['Response']['instrumentation'], array_merge($this->passedArgs, array('instrumentation'=>$response['Response']['instrumentation']))); ?>
 		</td>
 		<td>
-			<?php echo $response['Response']['texture']; ?>
+			<?php echo $html->link($response['Response']['texture'], array_merge($this->passedArgs, array('texture'=>$response['Response']['texture']))); ?>
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('Details', true), array('action' => 'view', $response['Response']['id'])); ?>
