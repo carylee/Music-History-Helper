@@ -45,11 +45,5 @@ $player->addjs();
 <div class="actions">
 	<ul>
 		<li><?php echo $html->link(__('Edit Response', true), array('action' => 'edit', $response['Response']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Genres', true), array('controller' => 'genres', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Genre', true), array('controller' => 'genres', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Periods', true), array('controller' => 'periods', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Period', true), array('controller' => 'periods', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Languages', true), array('controller' => 'languages', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Language', true), array('controller' => 'languages', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
