@@ -20,12 +20,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Delete', true), array('action' => 'delete', $form->value('Response.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Response.id'))); ?></li>
 		<li><?php echo $html->link(__('List Responses', true), array('action' => 'index'));?></li>
-		<li><?php echo $html->link(__('List Users', true), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New User', true), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Songs', true), array('controller' => 'songs', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Song', true), array('controller' => 'songs', 'action' => 'add')); ?> </li>
 		<li><?php echo $html->link(__('List Genres', true), array('controller' => 'genres', 'action' => 'index')); ?> </li>
 		<li><?php echo $html->link(__('New Genre', true), array('controller' => 'genres', 'action' => 'add')); ?> </li>
 		<li><?php echo $html->link(__('List Periods', true), array('controller' => 'periods', 'action' => 'index')); ?> </li>
