@@ -5,7 +5,7 @@
 <title><?php echo $title_for_layout?></title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <!-- Include external files and scripts here (See HTML helper for more info.) -->
-<?php echo $html->css('cake.generic'); ?>
+<?php echo $html->css('mainstyle'); ?>
 <?php echo $scripts_for_layout ?>
 </head>
 <body>
@@ -13,7 +13,13 @@
 <!-- If you'd like some sort of menu to 
 show up on all of your views, include it here -->
 <div id="header">
-    <div id="menu">Menu here<div>
+    <div id="menu">
+      <ul>
+        <li><?php echo $html->link('Home', '/');?></li>
+        <li><?php echo $html->link('All Songs', array('controller'=>'responses', 'action'=>'index'));?></li>
+        <li>Report Bug</li>
+      </ul>
+    </div>
 </div>
 
 <!-- Here's where I want my views to be displayed -->

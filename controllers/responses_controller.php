@@ -34,6 +34,7 @@ class ResponsesController extends AppController {
     $this->paginate = array(
       'conditions' => $conditions,
       'recursive' => 0,
+      'order' => 'Song.nawm',
       );
     $info = $this->paginate();
     $this->attachMp3Lists( $info );

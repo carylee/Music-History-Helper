@@ -46,6 +46,7 @@ $player->addjs();
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Response', true), array('action' => 'edit', $response['Response']['id'])); ?> </li>
+		<li><?php echo $html->link(__('Edit Notes', true), array('action' => 'edit', $response['Response']['id'])); ?> </li>
+		<li><?php echo $html->link(__('See all pieces', true), array('action' => 'index')); ?> </li>
 	</ul>
 </div>

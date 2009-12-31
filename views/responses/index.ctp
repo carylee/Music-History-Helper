@@ -10,12 +10,12 @@ $paginator->options(array('update' => 'content', 'indicator' => 'spinner'));
 <p>
 <?php
 echo $paginator->counter(array(
-'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+'format' => __('Page %page% of %pages%, showing %current% pieces out of %count% total, starting on piece %start%, ending on %end%', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('id');?></th>
+	<th><?php echo $paginator->sort('NAWM', 'Song.nawm');?></th>
 	<th><?php echo $paginator->sort('Song', 'Song.title');?></th>
 	<th><?php echo $paginator->sort('Composer', 'Song.composer');?></th>
 	<th><?php echo $paginator->sort('genre');?></th>
@@ -35,7 +35,7 @@ foreach ($responses as $response):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $response['Response']['id']; ?>
+			<?php echo $response['Song']['nawm']; ?>
 		</td>
 		<td>
 			<?php echo $html->link($response['Song']['title'], array('controller' => 'responses', 'action' => 'view', $response['Response']['id'])); ?>
