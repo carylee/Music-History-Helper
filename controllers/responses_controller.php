@@ -42,9 +42,11 @@ class ResponsesController extends AppController {
 	}
 
   function filterRemoveLinks() {
+    $filterTypes = array('composer', 'genre', 'instrumentation', 'language', 'period', 'texture');
     $namedArguments = array();
     foreach($this->passedArgs as $filterType=>$filterName ) {
-      $namedArguments[$filterType] = $this->removeFilter( $filterType, $this->passedArgs );
+      if(in_array($filterType, $filterTypes))
+        $namedArguments[$filterType] = $this->removeFilter( $filterType, $this->passedArgs );
     }
     return $namedArguments;
 
