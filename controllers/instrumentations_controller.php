@@ -14,7 +14,7 @@ class InstrumentationsController extends AppController {
     $instrumentations = array();
     foreach( $responses as $response ) {
       if($response['Response']['instrumentation'] != '')
-        $instrumentations[] = strtolower($response['Response']['instrumentation']);
+        $instrumentations[] = ucfirst(strtolower($response['Response']['instrumentation']));
     }
 
     $allInstrumentations = array_unique($instrumentations);

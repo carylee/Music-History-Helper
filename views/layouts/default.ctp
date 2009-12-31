@@ -16,8 +16,8 @@ show up on all of your views, include it here -->
     <div id="menu">
       <ul>
         <li><?php echo $html->link('Home', '/');?></li>
-        <li><?php echo $html->link('All Songs', array('controller'=>'responses', 'action'=>'index'));?></li>
-        <li>Report Bug</li>
+        <li><?php echo $html->link('Pieces', array('controller'=>'responses', 'action'=>'index'));?></li>
+        <li>Feedback</li>
       </ul>
     </div>
 </div>

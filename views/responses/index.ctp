@@ -6,7 +6,16 @@ $paginator->options(array('update' => 'content', 'indicator' => 'spinner'));
 ?>
 <div class="responses index">
 <h2><?php __('Pieces');?></h2>
-<p><?php __('Click on an attribute to filter');?></p>
+<?php if(!$filters) {__('<p>Click on an attribute to filter</p>');};?>
+<div class="actions">
+  <?php if(count($filters) > 0) echo '<p>Songs currently filtered by</p>'; ?>
+	<ul>
+  <?php foreach($filters as $type=>$urlArgs): ?>
+  <li><?php echo $type . ' ' . $html->link('[x]', $urlArgs); ?></li>
+  <?php endforeach; ?>
+	</ul>
+  <?php if(count($filters) > 1) echo '<p>' . $html->link('View all songs', 'index') . '</p>'; ?>
+</div>
 <p>
 <?php
 echo $paginator->counter(array(
@@ -73,13 +82,4 @@ foreach ($responses as $response):
 	<?php echo $paginator->prev('<< '.__('previous', true), null, null, array('class'=>'disabled'));?>
  | 	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next(__('next', true).' >>', null, null, array('class' => 'disabled'));?>
-</div>
-<div class="actions">
-  <?php if(count($filters) > 0) echo '<p>Songs currently filtered by</p>'; ?>
-	<ul>
-  <?php foreach($filters as $type=>$urlArgs): ?>
-  <li><?php echo $type . ' ' . $html->link('[x]', $urlArgs); ?></li>
-  <?php endforeach; ?>
-	</ul>
-  <?php if(count($filters) > 1) echo '<p>' . $html->link('View all songs', 'index') . '</p>'; ?>
 </div>
