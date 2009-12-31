@@ -2,13 +2,20 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form');
-	var $components = array('Auth');
+	//var $helpers = array('Html', 'Form');
   var $uses = array('User', 'Song', 'Response');
 
   function beforeFilter() {
     $this->Auth->allow('add', 'login');
+    $this->Auth->authorize = 'controller';
+  }
 
+  function isAuthorized() {
+    if($this->Auth->user('id') == 17) {
+      return true;
+    } 
+    else
+      return false;
   }
 
   function login() {
@@ -66,7 +73,7 @@ class UsersController extends AppController {
 		$this->set('users', $this->paginate());
 	}
 
-/*
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid User.', true));
@@ -75,7 +82,7 @@ class UsersController extends AppController {
 		$this->set('user', $this->User->read(null, $id));
 	}
 
-	function add() {
+	/*function add() {
 		if (!empty($this->data)) {
 			$this->User->create();
 			if ($this->User->save($this->data)) {
@@ -85,7 +92,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The User could not be saved. Please, try again.', true));
 			}
 		}
-	}
+  }*/
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -114,7 +121,7 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('User deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
-  }*/
+  }
 
   function checkUsersOwnRecord($recordId = null) {
     if( $this->Auth->user('id') == $recordId ){
