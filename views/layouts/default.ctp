@@ -17,8 +17,13 @@ show up on all of your views, include it here -->
 </div>
 
 <!-- Here's where I want my views to be displayed -->
-<div id="content">
-<?php echo $content_for_layout ?>
+<div id="main">
+  <div id="spinner" style="display: none; float: right;">
+    <?php echo $html->image('spinner.gif'); ?>
+  </div>
+  <div id="content">
+  <?php echo $content_for_layout ?>
+  </div>
 </div>
 
 <!-- Add a footer to each displayed page -->

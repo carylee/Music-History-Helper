@@ -1,10 +1,11 @@
 <?php 
 $player->addjs();
-$javascript->link('prototype');
-$javascript->link('scriptaculous');
+echo $javascript->link('prototype');
+echo $javascript->link('scriptaculous');
+$paginator->options(array('update' => 'content', 'indicator' => 'spinner'));
 ?>
 <div class="responses index">
-<h2><?php __('Responses');?></h2>
+<h2><?php __('Pieces');?></h2>
 <p>
 <?php
 echo $paginator->counter(array(
@@ -68,9 +69,9 @@ foreach ($responses as $response):
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+	<?php echo $paginator->prev('<< '.__('previous', true), null, null, array('class'=>'disabled'));?>
  | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));?>
+	<?php echo $paginator->next(__('next', true).' >>', null, null, array('class' => 'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

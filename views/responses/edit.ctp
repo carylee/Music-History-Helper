@@ -8,7 +8,7 @@ $player->addjs();
 <div class="responses form">
 <?php echo $form->create('Response');?>
 	<fieldset>
- 		<legend><?php __('Edit Response');?></legend>
+ 		<legend><?php __('Edit Notes for Piece');?></legend>
     <h3><?php echo $response['Song']['title'];?></h3>
     <h4><?php echo $response['Song']['composer'];?></h4>
     <?php echo $player->embed($response['Song']['mp3list']); ?>

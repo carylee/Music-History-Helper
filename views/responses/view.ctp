@@ -2,8 +2,9 @@
 $player->addjs();
 ?>
 <div class="responses view">
-<h2><?php  __($response['Song']['title']);?></h2>
-<h3><?php  __($response['Song']['composer']);?></h3>
+<h2><?php  __('Notes for song');?></h2>
+<h3><?php  __($response['Song']['title']);?></h3>
+<h4><?php  __($response['Song']['composer']);?></h4>
   <?php echo $player->embed($response['Song']['mp3list']); ?>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genre'); ?></dt>
