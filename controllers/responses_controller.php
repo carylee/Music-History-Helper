@@ -38,7 +38,31 @@ class ResponsesController extends AppController {
     $info = $this->paginate();
     $this->attachMp3Lists( $info );
 		$this->set('responses', $info);
+    $this->set('filters', $this->filterRemoveLinks());
 	}
+
+  function filterRemoveLinks() {
+    $namedArguments = array();
+    foreach($this->passedArgs as $filterType=>$filterName ) {
+      $namedArguments[$filterType] = $this->removeFilter( $filterType, $this->passedArgs );
+    }
+    return $namedArguments;
+
+  }
+
+  /*function removeFilter( $filter ) {
+    $without = array();
+    foreach( $this->passedArgs as $name=>$arg ) {
+      if($name!=$filter)
+        $without[$name] = $arg;
+    }
+    return $without;
+  }*/
+
+  function removeFilter( $filterToRemove, $currentFilters ) {
+    unset($currentFilters[$filterToRemove]);
+    return $currentFilters;
+  }
 
 	function view($id = null) {
 		if (!$id) {

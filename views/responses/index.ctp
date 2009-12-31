@@ -74,5 +74,9 @@ foreach ($responses as $response):
 </div>
 <div class="actions">
 	<ul>
+  <?php if(count($filters) > 1) echo '<li>' . $html->link('View all songs', 'index') . '</li>'; ?>
+  <?php foreach($filters as $type=>$urlArgs): ?>
+  <li><?php echo $html->link('View all ' . $type . 's', $urlArgs); ?></li>
+  <?php endforeach; ?>
 	</ul>
 </div>
