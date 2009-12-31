@@ -6,8 +6,8 @@ class AppController extends Controller {
   function beforeFilter(){
     $this->Auth->authorize = 'controller';
     $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
-    $this->Auth->loginRedirect = array('controller'=>'users', 'action'=>'index');
-    $this->Auth->logoutRedirect = array('controller'=>'responses', 'action'=>'index');
+    $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
+    $this->Auth->logoutRedirect = array('controller'=>'users', 'action'=>'login');
 
     //if( !isAuthorized() ){
       //$this->redirect->(

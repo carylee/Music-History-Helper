@@ -8,6 +8,9 @@ class UsersController extends AppController {
   function beforeFilter() {
     $this->Auth->allow('add', 'login');
     $this->Auth->authorize = 'controller';
+    //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
+    $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
+    //$this->Auth->logoutRedirect = array('controller'=>'users', 'action'=>'login');
   }
 
   function isAuthorized() {

@@ -2,7 +2,7 @@
 class ResponsesController extends AppController {
 	var $name = 'Responses';
 	var $helpers = array('Html', 'Ajax', 'Form', 'Javascript', 'Player');
-  //var $components = array( 'RequestHelper' );
+  var $components = array( 'RequestHandler' );
   var $uses = array('Response', 'User');
 //  var $actsAs = array('Containable');
 
