@@ -42,18 +42,31 @@ class UsersController extends AppController {
   }
 
   function changePassword() {
-    $userId = $this->User->findById( $this->Auth->user('id'));
-    $user = $this->Auth->user();
-    pr($userId);
-    //if( !empty($this->data)) {
-      //if ($this->data['User']['old_password'] == 
+    $user = $this->User->findById( $this->Auth->user('id'));
+    //pr($user);
+    if( !empty($this->data)) {
+      $this->data['User']['password'] = $this->Auth->password($this->data['User']['password']);
+      if ($this->Auth->password($this->data['User']['old_password']) == $user['User']['password']) {
+        if( $this->Auth->password($this->data['User']['confirm_password']) == 
+            $this->data['User']['password']) {
+          pr($this->data);
+          $this->User->save($this->data);
+        } else {
+          echo 'Password don\'t match';
+        }
+      } else {
+        echo 'Old password incorrect';
+      }
+    }
+    $this->set('user', $user);
   }
 
-	/*function index() {
+	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
 
+/*
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid User.', true));
