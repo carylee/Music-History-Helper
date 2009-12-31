@@ -17,7 +17,9 @@ show up on all of your views, include it here -->
 </div>
 
 <!-- Here's where I want my views to be displayed -->
+<div id="content">
 <?php echo $content_for_layout ?>
+</div>
 
 <!-- Add a footer to each displayed page -->
 <div id="footer">Copyright 2009 Cary Lee<div>
