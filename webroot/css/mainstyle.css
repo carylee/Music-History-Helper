@@ -75,7 +75,8 @@ blockquote, q {
 /* General Style Info */
 body {
 	/*background: #003d4c;*/
-  background: rgba(70,30,130,1);
+  /*background-image: url('/img/neumes.png');*/
+  background: rgba(70,30,130,1) url(../img/neumes.png) repeat;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
@@ -106,6 +107,7 @@ h1 {
 }
 h2 {
 	background: rgba(255,255,255,.4);
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
 	color: #e32;
 	font-family:'Gill Sans','lucida grande',helvetica, arial, sans-serif;
 	font-size: 190%;
@@ -135,7 +137,7 @@ ul, li {
 }
 
 #header{
-	padding: 10px 20px;
+	/*padding: 10px 20px;*/
 }
 #header h1 {
 	background: #003d4c url('../img/cake.icon.gif') no-repeat left;
@@ -272,11 +274,15 @@ fieldset {
 	border: 1px solid #ccc;
 	margin-top: 30px;
 	padding: 16px 20px;
-  background: rgba(255,255,255,.8)
+  background: rgba(255,255,255,.8);
+  -webkit-box-shadow: 1px 2px 2px rgba(0,0,0,.4);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  box-shadow: 1px 2px 1px rgba(0,0,0,.4);
 }
 fieldset legend {
 	/*background:#fff;*/
 	color: #e32;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
 	font-size: 160%;
 	font-weight: bold;
 }
@@ -554,24 +560,34 @@ object {
 }
 
 /* Menu */
+div#menu {
+  background: rgba(70,30,130,1);
+  height:36px;
+}
+
 div#menu ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
+  display:block;
 }
 div#menu li {
-  line-height: 20px;
   display: inline;
   margin: 0px;
-  padding: 11px;
+  padding: 0px;
+  line-height: 34px;
 }
-div#menu li:hover {
+
+/*div#menu li:hover {
   background: rgba(255,255,255,.5);
-}
+}*/
 
 div#menu a {
   font-weight: normal;
-  height: 40px;
   color: white;
   padding: 10px;
+}
+
+div#menu a:hover {
+  background: rgba(255,255,255,.5);
 }
