@@ -42,4 +42,5 @@
  */
 //EOF
 define('QUARTER', 2);
+define('ADMIN_EMAIL', 'carylee@gmail.com');
 ?>

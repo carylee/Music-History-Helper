@@ -4,9 +4,10 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	//var $helpers = array('Html', 'Form');
   var $uses = array('User', 'Song', 'Response');
+  var $components = array('Email');
 
   function beforeFilter() {
-    $this->Auth->allow('add', 'login');
+    $this->Auth->allow('add', 'login', 'feedback');
     $this->Auth->authorize = 'controller';
     //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
@@ -154,6 +155,18 @@ class UsersController extends AppController {
     } else {
       return FALSE;
     }
+  }
+
+  function feedback() {
+    if( !empty($this->data) ) {
+      //debug($this->data);
+      $this->Email->from = $this->data['User']['name'] . ' <' . $this->data['User']['email'] . '>';
+      $this->Email->to = ADMIN_EMAIL;
+      $this->Email->subject = 'Music History Feedback';
+      //$this->Email->delivery = 'debug';
+      $this->Email->send( $this->data['User']['feedback'] );
+    }
+    $this->set('email', $this->Auth->user('username'));
   }
 
 }

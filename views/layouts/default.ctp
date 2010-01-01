@@ -17,7 +17,7 @@ show up on all of your views, include it here -->
       <ul>
         <li><?php echo $html->link('Home', '/');?></li>
         <li><?php echo $html->link('Pieces', array('controller'=>'responses', 'action'=>'index'));?></li>
-        <li>Feedback</li>
+        <li><?php echo $html->link('Feedback', array('controller'=>'users', 'action'=>'feedback'));?></li>
       </ul>
     </div>
 </div>
