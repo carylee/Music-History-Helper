@@ -5,7 +5,7 @@
 	<?php
 		echo $form->input('id');
 		echo $form->input('username');
-		echo $form->input('password');
+		//echo $form->input('password');
 		echo $form->input('verified');
 	?>
 	</fieldset>

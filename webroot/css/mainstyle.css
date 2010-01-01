@@ -74,7 +74,8 @@ blockquote, q {
 
 /* General Style Info */
 body {
-	background: #003d4c;
+	/*background: #003d4c;*/
+  background: rgba(70,30,130,1);
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
@@ -175,6 +176,7 @@ table {
 	margin-bottom: 10px;
 	width: 100%;
 }
+
 th {
 	background: #f2f2f2;
 	border:1px solid #bbb;
@@ -569,7 +571,7 @@ div#menu li:hover {
 
 div#menu a {
   font-weight: normal;
-  height:40px;
+  height: 40px;
   color: white;
   padding: 10px;
 }

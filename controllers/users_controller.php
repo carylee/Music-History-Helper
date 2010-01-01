@@ -38,17 +38,39 @@ class UsersController extends AppController {
         $userId = $this->User->getLastInsertId(); // Get user id
 
         // Add all songs to user's responses (empty)
-        $songs = $this->Song->find('list');
-        foreach( $songs as $song_id => $song ) {
-          $this->Response->create();
-          $row = array(
-            'user_id' => $userId,
-            'song_id' => $song_id,
-          );
-          $this->Response->save($row);
-        }
+        $this->_giveUserSongs( $userId, QUARTER, true );
+     }
+    }
+  }
+
+  function _giveUserSongs( $userId, $quarter=QUARTER, $sample=false ) {
+    // Conditions for first find
+    $conditions = array('Song.quarter'=>$quarter);
+    if( $sample ) {
+      $conditions['Song.sample'] = 1;
+    }
+    $songs = $this->Song->find('list', array('conditions'=>$conditions));
+    foreach( $songs as $song_id => $song ) {
+      if( $this->Response->find('count', array('conditions'=>array(
+        'Response.song_id'=>$song_id,
+        'Response.user_id'=>$userId))) == 0 ) 
+      {
+        $this->Response->create();
+        $row = array(
+          'user_id' => $userId,
+          'song_id' => $song_id,
+        );
+        $this->Response->save($row);
       }
     }
+  }
+  
+  function grantSongs( $userId ) {
+    if(!empty($this->data)) {
+      $this->_giveUserSongs( $this->data['user_id'], $this->data['quarter'], false);
+      $this->redirect(array('action'=>'index'));
+    }
+    $this->set('userId', $userId);
   }
 
   function changePassword() {
@@ -81,8 +103,8 @@ class UsersController extends AppController {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid User.', true));
 			$this->redirect(array('action'=>'index'));
-		}
-		$this->set('user', $this->User->read(null, $id));
+		} else
+      $this->set('user', $this->User->read(null, $id));
 	}
 
 	/*function add() {
@@ -107,7 +129,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The User has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlash(__('The User could not be saved. Please, try again.', true));
+          $this->Session->setFlash(__('The User could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {

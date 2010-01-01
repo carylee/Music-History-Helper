@@ -41,4 +41,5 @@
  *
  */
 //EOF
+define('QUARTER', 2);
 ?>
