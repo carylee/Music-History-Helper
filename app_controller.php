@@ -5,9 +5,11 @@ class AppController extends Controller {
 
   function beforeFilter(){
     $this->Auth->authorize = 'controller';
+    $this->Auth->allow('home');
     $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
     $this->Auth->logoutRedirect = array('controller'=>'users', 'action'=>'login');
+    $this->Auth->authError = 'You must be logged in to do that.';
 
     //if( !isAuthorized() ){
       //$this->redirect->(

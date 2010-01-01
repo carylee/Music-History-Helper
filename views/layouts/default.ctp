@@ -28,7 +28,9 @@ show up on all of your views, include it here -->
     <?php echo $html->image('spinner.gif'); ?>
   </div>
   <div id="content">
-  <?php echo $content_for_layout ?>
+    <div id="inner">
+      <?php echo $content_for_layout ?>
+    </div>
   </div>
 </div>
 

@@ -7,10 +7,11 @@ class UsersController extends AppController {
   var $components = array('Email');
 
   function beforeFilter() {
-    $this->Auth->allow('add', 'login', 'feedback');
+    $this->Auth->allow('add', 'login', 'feedback', 'requestAccount');
     $this->Auth->authorize = 'controller';
     //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
+    $this->Auth->authError = 'You must be logged in to do that.';
     //$this->Auth->logoutRedirect = array('controller'=>'users', 'action'=>'login');
   }
 

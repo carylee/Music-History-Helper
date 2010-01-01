@@ -8,6 +8,7 @@ class ResponsesController extends AppController {
 
   function beforeFilter() {
     $this->Auth->allow('');
+    $this->Auth->authError = 'You must be logged in to do that.';
     $this->Auth->authorize = 'controller';
   }
 
