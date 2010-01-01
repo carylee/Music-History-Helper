@@ -169,5 +169,13 @@ class UsersController extends AppController {
     $this->set('email', $this->Auth->user('username'));
   }
 
+  function requestAccount() {
+    if( !empty($this->data) ) {
+      debug($this->data);
+      //$this->
+    }
+  }
+
+
 }
 ?>
