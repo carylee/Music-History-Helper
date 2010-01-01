@@ -33,7 +33,7 @@ show up on all of your views, include it here -->
 </div>
 
 <!-- Add a footer to each displayed page -->
-<div id="footer">Copyright 2009 Cary Lee<div>
+<div id="footer">Copyright 2010 Cary Lee<div>
 
 </body>
 </html>
