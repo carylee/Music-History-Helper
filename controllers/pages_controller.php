@@ -65,6 +65,13 @@ class PagesController extends AppController {
   }
 
 	function display() {
+    /*if(!$this->Auth->user()) {
+      $this->layout = 'anonymous';
+    } else if( $this->Auth->user('verified')) {
+      $this->layout = 'authenticated';
+    } else {
+      $this->layout = 'trial';
+    }*/
 		$path = func_get_args();
 
 		$count = count($path);
