@@ -16,6 +16,7 @@ class DATABASE_CONFIG {
 		'login' => 'root',
 		'password' => 'root',
 		'database' => 'carylee_mush2',
+    'encoding' => 'utf8',
 	);
 }
 ?>
