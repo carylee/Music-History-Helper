@@ -76,7 +76,7 @@ blockquote, q {
 body {
 	/*background: #003d4c;*/
   /*background-image: url('/img/neumes.png');*/
-  background: rgba(70,30,130,1) url(../img/neumes.png) repeat;
+  background: rgba(70,30,130,1) /*url(../img/neumes.png) repeat*/;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;

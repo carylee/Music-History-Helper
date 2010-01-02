@@ -167,7 +167,9 @@ class UsersController extends AppController {
       //$this->Email->delivery = 'debug';
       $this->Email->send( $this->data['User']['feedback'] );
     }
+    //pr($this->Auth->user());
     $this->set('email', $this->Auth->user('username'));
+    $this->set('name', $this->Auth->user('name'));
   }
 
   function requestAccount() {
