@@ -4,7 +4,7 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	//var $helpers = array('Html', 'Form');
   var $uses = array('User', 'Song', 'Response');
-  var $components = array('Email');
+  var $components = array('Email', 'SwiftMailer');
 
   function beforeFilter() {
     $this->Auth->allow('add', 'login', 'feedback', 'requestAccount');
@@ -161,19 +161,25 @@ class UsersController extends AppController {
   function feedback() {
     if( !empty($this->data) ) {
       //debug($this->data);
-      $this->Email->from = $this->data['User']['name'] . ' <' . $this->data['User']['email'] . '>';
-      $this->Email->to = ADMIN_EMAIL;
+      /*$this->Email->from = $this->data['User']['name'] . ' <' . $this->data['User']['email'] . '>';
+      $this->Email->to = 'Cary Lee <' . ADMIN_EMAIL . '>';
       $this->Email->subject = 'Music History Feedback';
       $this->Email->delivery = 'smtp';
       $this->Email->smtpOptions = array(
         'port'=>'465',
         'timeout'=>'30',
-        'host'=>'smtp.gmail.com',
+        'host'=>'ssl://smtp.gmail.com',
         'username'=>'web@caryme.com',
         'password'=>'NOsoup4u'
       );
-      //$this->Email->delivery = 'debug';
+      $this->Email->delivery = 'debug';
+      pr($this->Session->read('Message.email'));
       $this->Email->send( $this->data['User']['feedback'] );
+      pr($this->Email->smtpError);*/
+      $this->_mail(ADMIN_EMAIL, $this->data['User']['email'],
+        $this->data['User']['name'],
+        "Feedback",
+        $this->data['User']['feedback']);
     }
     //pr($this->Auth->user());
     $this->set('email', $this->Auth->user('username'));
@@ -185,6 +191,30 @@ class UsersController extends AppController {
       debug($this->data);
       //$this->
     }
+  }
+
+  function _mail($to, $from, $fromName, $subject, $body) {
+    $this->SwiftMailer->smtpType = 'tls';
+    $this->SwiftMailer->smtpHost = 'smtp.gmail.com';
+    $this->SwiftMailer->smtpPort = 456;
+    $this->SwiftMailer->smtpUsername = 'carylee@gmail.com';
+    $this->SwiftMailer->smtpPassword = 'NOsoup4u';
+    $this->SwiftMailer->sendAs = 'text';
+    $this->SwiftMailer->from = $from;
+    $this->SwiftMailer->fromName = $fromName;
+    $this->SwiftMailer->to = $to;
+    $this->set('message', $body );
+
+    try {
+      if(!$this->SwiftMailer->send('default', $subject)) {
+        $this->log("Error sending email");
+        //echo 'error';
+      }
+    }
+    catch(Exception $e) {
+      $this->log("Failed to send email: ".$e->getMessage());
+    }
+    $this->redirect($this->referer(), null, true);
   }
 
 
