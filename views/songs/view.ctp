@@ -13,7 +13,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Composer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($song['Composer']['name'], array('controller' => 'composers', 'action' => 'view', $song['Composer']['id'])); ?>
+			<?php echo $song['Song']['composer']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
@@ -121,9 +121,9 @@
 			<td><?php echo $response['id'];?></td>
 			<td><?php echo $response['user_id'];?></td>
 			<td><?php echo $response['song_id'];?></td>
-			<td><?php echo $response['genre_id'];?></td>
-			<td><?php echo $response['period_id'];?></td>
-			<td><?php echo $response['language_id'];?></td>
+			<td><?php echo $response['genre'];?></td>
+			<td><?php echo $response['period'];?></td>
+			<td><?php echo $response['language'];?></td>
 			<td><?php echo $response['instrumentation'];?></td>
 			<td><?php echo $response['texture'];?></td>
 			<td><?php echo $response['notes'];?></td>
