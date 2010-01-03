@@ -202,6 +202,7 @@ class UsersController extends AppController {
     $this->SwiftMailer->smtpPassword = 'NOsoup4u';
     $this->SwiftMailer->sendAs = 'text';
     $this->SwiftMailer->from = $from;
+    $this->SwiftMailer->replyTo = $from;
     $this->SwiftMailer->fromName = $fromName;
     $this->SwiftMailer->to = $to;
     $this->set('message', $body );
