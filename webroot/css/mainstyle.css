@@ -596,3 +596,19 @@ div#menu a {
 div#menu a:hover {
   background: rgba(255,255,255,.5);
 }
+
+/* repsonse/edit form */
+form fieldset object#audioplayer_1 {
+  float:left;
+  clear:both;
+}
+
+div#shortanswers {
+  float: left;
+  width: 40%;
+}
+div#notes {
+  float: right;
+  clear: right;
+  width: 55%;
+}

@@ -14,8 +14,8 @@ $player->addjs();
     <?php echo $player->embed($response['Song']['mp3list']); ?>
 	<?php
 		echo $form->input('id');
-		//echo $form->input('genre');
   ?>
+  <div id="shortanswers">
     <div class="input text">
       <label for="Genre">Genre</label>
       <?php echo $ajax->autoComplete('genre', '/genres/autoComplete'); ?>
@@ -36,12 +36,15 @@ $player->addjs();
       <label for="Texture">Texture</label>
       <?php echo $ajax->autoComplete('texture', '/textures/autoComplete'); ?>
     </div>
+  </div>
+  <div id="notes">
 <?php
 		//echo $form->input('language');
 		//echo $form->input('instrumentation');
 		//echo $form->input('texture');
 		echo $form->input('notes');
 	?>
+  </div>
 	</fieldset>
 <?php echo $form->end('Submit');?>
 </div>
