@@ -13,9 +13,9 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => '127.0.0.1',
-		'login' => 'root',
-		'password' => 'root',
-		'database' => 'carylee_mush2',
+		'login' => 'carylee_mush',
+		'password' => 'istbnt2tb2nw',
+		'database' => 'carylee_mush',
     'encoding' => 'utf8',
 	);
 }

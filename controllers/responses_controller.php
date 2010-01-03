@@ -183,7 +183,7 @@ class ResponsesController extends AppController {
   }
 
   function attachMp3List( &$response ) {
-    $dirPath = "/media/";
+    $dirPath = "/media/nawm/";
     $recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
     $urls = array();
     foreach( $recordings as $recording ) {
