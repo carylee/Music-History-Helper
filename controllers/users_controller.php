@@ -196,7 +196,7 @@ class UsersController extends AppController {
   function _mail($to, $from, $fromName, $subject, $body) {
     $this->SwiftMailer->smtpType = 'tls';
     $this->SwiftMailer->smtpHost = 'smtp.gmail.com';
-    $this->SwiftMailer->smtpPort = 456;
+    $this->SwiftMailer->smtpPort = 587;
     $this->SwiftMailer->smtpUsername = 'carylee@gmail.com';
     $this->SwiftMailer->smtpPassword = 'NOsoup4u';
     $this->SwiftMailer->sendAs = 'text';
