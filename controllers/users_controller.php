@@ -164,6 +164,14 @@ class UsersController extends AppController {
       $this->Email->from = $this->data['User']['name'] . ' <' . $this->data['User']['email'] . '>';
       $this->Email->to = ADMIN_EMAIL;
       $this->Email->subject = 'Music History Feedback';
+      $this->Email->delivery = 'smtp';
+      $this->Email->smtpOptions = array(
+        'port'=>'465',
+        'timeout'=>'30',
+        'host'=>'smtp.gmail.com',
+        'username'=>'web@caryme.com',
+        'password'=>'NOsoup4u'
+      );
       //$this->Email->delivery = 'debug';
       $this->Email->send( $this->data['User']['feedback'] );
     }
