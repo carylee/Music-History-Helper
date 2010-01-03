@@ -180,6 +180,7 @@ class UsersController extends AppController {
         $this->data['User']['name'],
         "Feedback",
         $this->data['User']['feedback']);
+      $this->redirect($this->referer(), null, true);
     }
     //pr($this->Auth->user());
     $this->set('email', $this->Auth->user('username'));
@@ -196,8 +197,8 @@ class UsersController extends AppController {
   function _mail($to, $from, $fromName, $subject, $body) {
     $this->SwiftMailer->smtpType = 'tls';
     $this->SwiftMailer->smtpHost = 'smtp.gmail.com';
-    $this->SwiftMailer->smtpPort = 587;
-    $this->SwiftMailer->smtpUsername = 'carylee@gmail.com';
+    $this->SwiftMailer->smtpPort = 465;
+    $this->SwiftMailer->smtpUsername = 'web@caryme.com';
     $this->SwiftMailer->smtpPassword = 'NOsoup4u';
     $this->SwiftMailer->sendAs = 'text';
     $this->SwiftMailer->from = $from;
@@ -208,13 +209,11 @@ class UsersController extends AppController {
     try {
       if(!$this->SwiftMailer->send('default', $subject)) {
         $this->log("Error sending email");
-        //echo 'error';
       }
     }
     catch(Exception $e) {
       $this->log("Failed to send email: ".$e->getMessage());
     }
-    $this->redirect($this->referer(), null, true);
   }
 
 
