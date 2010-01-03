@@ -47,12 +47,19 @@ foreach ($responses as $response):
 			<?php echo $response['Song']['nawm']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Song']['title'], array('controller' => 'responses', 'action' => 'view', $response['Response']['id'])); ?>
+      <?php echo $html->link($response['Song']['title'], 
+          array('controller' => 'responses', 
+                'action' => 'view', 
+                $response['Response']['id']),
+          null, null, false); ?>
       <br />
       <?php echo $player->embed($response['Song']['mp3list'], $response['Response']['id']); ?>
 		</td>
 		<td>
-			<?php echo $html->link($response['Song']['composer'], array_merge($this->passedArgs, array('composer'=>$response['Song']['composer']))); ?>
+<?php echo $html->link($response['Song']['composer'], 
+array_merge($this->passedArgs, 
+            array('composer'=>$response['Song']['composer'])),
+null, null, false); ?>
 		</td>
 		<td>
       <?php echo $html->link($response['Response']['genre'], array_merge($this->passedArgs, array('genre'=>$response['Response']['genre']))); ?>
