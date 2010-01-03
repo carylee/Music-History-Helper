@@ -46,7 +46,7 @@ $player->addjs();
 	?>
   </div>
 <?php echo $form->submit('Save');
-echo $form->submit('Cancel');
+/*echo $form->submit('Cancel');*/
 echo $form->end();?>
 	</fieldset>
 </div>
