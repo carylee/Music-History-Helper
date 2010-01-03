@@ -42,11 +42,13 @@ $player->addjs();
 		//echo $form->input('language');
 		//echo $form->input('instrumentation');
 		//echo $form->input('texture');
-		echo $form->input('notes');
+    echo $form->input('notes', array('type'=>'textarea', 'rows'=>14));
 	?>
   </div>
+<?php echo $form->submit('Save');
+echo $form->submit('Cancel');
+echo $form->end();?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
 </div>
 <!--<div class="actions">
 	<ul>
