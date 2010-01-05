@@ -14,6 +14,14 @@ class ResponsesController extends AppController {
 
 	function index() {
     $conditions = array( 'Response.user_id' => $this->Session->read('Auth.User.id') );
+    // Quarters
+    if(!empty($this->passedArgs['quarter'])) {
+      $conditions['quarter'] = $this->passedArgs['quarter'];
+    } else {
+      $conditions['quarter'] = QUARTER;
+    }
+
+    // Filters
     if(!empty($this->passedArgs['genre'])) {
       $conditions['genre LIKE'] = $this->passedArgs['genre'];
     }
