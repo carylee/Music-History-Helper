@@ -1,8 +1,9 @@
 <?php 
 $player->addjs();
-echo $javascript->link('prototype');
-echo $javascript->link('scriptaculous');
-$paginator->options(array('update' => 'content', 'indicator' => 'spinner'));
+//echo $javascript->link('prototype');
+//echo $javascript->link('scriptaculous');
+//$paginator->options(array('update' => 'content', 'indicator' => 'spinner'));
+$paginator->options(array('url' => $this->passedArgs));
 ?>
 <div class="responses index">
 <h2><?php __('Pieces');?></h2>
