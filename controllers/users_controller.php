@@ -7,7 +7,7 @@ class UsersController extends AppController {
   var $components = array('Email', 'SwiftMailer');
 
   function beforeFilter() {
-    $this->Auth->allow('register', 'login', 'feedback', 'requestAccount');
+    $this->Auth->allow('pay', 'register', 'login', 'feedback', 'requestAccount');
     $this->Auth->authorize = 'controller';
     //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
