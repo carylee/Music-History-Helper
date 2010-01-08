@@ -612,3 +612,7 @@ div#notes {
   clear: right;
   width: 55%;
 }
+
+form.narrow input {
+  width: auto !important;
+}
