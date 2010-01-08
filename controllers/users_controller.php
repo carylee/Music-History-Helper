@@ -25,6 +25,7 @@ class UsersController extends AppController {
 
   function login( $email='' ) {
     $this->set('email', $email );
+    $this->layout = 'anonymous';
     //$this->redirect(array('controller' => 'responses', 'action'=>'index'));
   }
 
@@ -33,6 +34,7 @@ class UsersController extends AppController {
   }
 
   function register() {
+    $this->layout = 'anonymous';
     if( !empty($this->data)) {
       $this->User->set( $this->data );
 
