@@ -188,13 +188,20 @@ class UsersController extends AppController {
   }
 
   function requestAccount() {
+    $this->layout = 'anonymous';
     if( !empty($this->data) ) {
       debug($this->data);
-      //$this->
+      $this->_mail(
+        ADMIN_EMAIL,
+        $this->data['User']['email'],
+        $this->data['User']['name'],
+        'Music History Account Request',
+        "Account requested for " . $this->data['User']['name'] );
+
     }
   }
 
-  function _mail($to, $from, $fromName, $subject, $body) {
+  function _mail($to, $from, $fromName, $subject, $body, $template='default') {
     $this->SwiftMailer->smtpType = 'tls';
     $this->SwiftMailer->smtpHost = 'smtp.gmail.com';
     $this->SwiftMailer->smtpPort = 465;
@@ -208,7 +215,7 @@ class UsersController extends AppController {
     $this->set('message', $body );
 
     try {
-      if(!$this->SwiftMailer->send('default', $subject)) {
+      if(!$this->SwiftMailer->send($template, $subject)) {
         $this->log("Error sending email");
       }
     }
