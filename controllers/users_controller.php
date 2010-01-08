@@ -23,7 +23,8 @@ class UsersController extends AppController {
       return false;
   }
 
-  function login() {
+  function login( $email='' ) {
+    $this->set('email', $email );
     //$this->redirect(array('controller' => 'responses', 'action'=>'index'));
   }
 
@@ -46,6 +47,7 @@ class UsersController extends AppController {
         else {
           // Add all songs to user's responses (empty)
           $this->_giveUserSongs( $userId, QUARTER, true );
+          $this->flash("Thanks for registering! You will be redirected to the login page.", array('controller'=>'users', 'action'=>'login', $this->data['User']['username']), '4');
         }
       }
     }
