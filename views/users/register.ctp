@@ -11,6 +11,7 @@
       'legend' => 'Would you like to register a full account?',
       'options' => array('Yes please, here\'s $10', 'Not yet, just a trial for now'),
       'type' => 'radio',
+      'value' => 0,
     ));
 	?>
 	</fieldset>
