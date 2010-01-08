@@ -51,7 +51,6 @@ class UsersController extends AppController {
 
   function pay( $userId ) {
     $user = $this->User->findById($userId);
-    debug($user);
   }
 
     
