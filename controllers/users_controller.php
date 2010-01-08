@@ -33,18 +33,20 @@ class UsersController extends AppController {
 
   function register() {
     if( !empty($this->data)) {
+      $this->User->set( $this->data );
 
-      $userId = $this->_add($this->data);
+      if( $this->User->validates() ) {
 
-      if( $this->data['User']['account'] == 0 ) {
-        $this->redirect(array('controller'=>'users', 'action'=>'pay', $userId));
+        $userId = $this->_add($this->data);
 
-      }
-      else {
+        if( $this->data['User']['account'] == 0 ) {
+          $this->redirect(array('controller'=>'users', 'action'=>'pay', $userId));
+        }
 
-
-        // Add all songs to user's responses (empty)
-        $this->_giveUserSongs( $userId, QUARTER, true );
+        else {
+          // Add all songs to user's responses (empty)
+          $this->_giveUserSongs( $userId, QUARTER, true );
+        }
       }
     }
   }
