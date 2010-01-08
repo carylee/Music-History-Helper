@@ -1,5 +1,5 @@
 <div class="user registration form">
-<?php echo $form->create('User');?>
+<?php echo $form->create('User', array('action'=>'register'));?>
 	<fieldset>
  		<legend><?php __('Register');?></legend>
 	<?php

@@ -7,7 +7,7 @@ class UsersController extends AppController {
   var $components = array('Email', 'SwiftMailer');
 
   function beforeFilter() {
-    $this->Auth->allow('add', 'login', 'feedback', 'requestAccount');
+    $this->Auth->allow('register', 'login', 'feedback', 'requestAccount');
     $this->Auth->authorize = 'controller';
     //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
@@ -31,7 +31,7 @@ class UsersController extends AppController {
     $this->redirect($this->Auth->logout());
   }
 
-  function add() {
+  function register() {
     if( !empty($this->data)) {
       if ($this->data['User']['password'] == $this->Auth->password($this->data['User']['password_confirm'])) {
         $this->User->create();
@@ -196,10 +196,15 @@ class UsersController extends AppController {
         $this->data['User']['email'],
         $this->data['User']['name'],
         'Music History Account Request',
-        "Account requested for " . $this->data['User']['name'] );
-
+        "Account requested for " . $this->data['User']['name'] 
+      );
     }
   }
+
+  /*function register() {
+    $this->layout = 'anonymous';
+    if( !empty($this->data) ) {*/
+      
 
   function _mail($to, $from, $fromName, $subject, $body, $template='default') {
     $this->SwiftMailer->smtpType = 'tls';
