@@ -17,16 +17,13 @@ show up on all of your views, include it here -->
       <ul>
         <li><?php echo $html->link('Home', '/');?></li>
         <li><?php echo $html->link('Request an account', array('controller'=>'users', 'action'=>'requestAccount'));?></li>
-        <li><?php echo $html->link('Feedback', array('controller'=>'users', 'action'=>'feedback'));?></li>
+        <li><?php echo $html->link('Contact', array('controller'=>'users', 'action'=>'feedback'));?></li>
       </ul>
     </div>
 </div>
 
 <!-- Here's where I want my views to be displayed -->
 <div id="main">
-  <div id="spinner" style="display: none; float: right;">
-    <?php echo $html->image('spinner.gif'); ?>
-  </div>
   <div id="content">
     <div id="inner">
       <?php echo $content_for_layout ?>
