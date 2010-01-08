@@ -3,9 +3,15 @@ class User extends AppModel {
 
 	var $name = 'User';
 	var $validate = array(
-		'username' => array('email'),
-		//'password' => array('between', 5, 15),
-		'verified' => array('boolean')
+    'username' => array(
+      'rule' => 'email',
+      'message' => 'Please enter a valid email address',
+    ),
+    'password' => array(
+      'rule' => array('minLength', '8'),
+      'message' => 'Minimum 8 characters long',
+    ),
+		'verified' => array('boolean'),
 	);
   var $recursive = -1;
 
