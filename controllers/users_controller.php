@@ -33,17 +33,18 @@ class UsersController extends AppController {
 
   function register() {
     if( !empty($this->data)) {
-      if ($this->data['User']['password'] == $this->Auth->password($this->data['User']['password_confirm'])) {
-        $this->User->create();
-        $this->User->save($this->data);
+      $this->User->create();
+      $this->User->save($this->data);
 
-        $userId = $this->User->getLastInsertId(); // Get user id
+      $userId = $this->User->getLastInsertId(); // Get user id
 
-        // Add all songs to user's responses (empty)
-        $this->_giveUserSongs( $userId, QUARTER, true );
-     }
+      // Add all songs to user's responses (empty)
+      $this->_giveUserSongs( $userId, QUARTER, true );
     }
   }
+
+  //function _register() {
+
 
   function _giveUserSongs( $userId, $quarter=QUARTER, $sample=false ) {
     // Conditions for first find
@@ -200,11 +201,6 @@ class UsersController extends AppController {
       );
     }
   }
-
-  /*function register() {
-    $this->layout = 'anonymous';
-    if( !empty($this->data) ) {*/
-      
 
   function _mail($to, $from, $fromName, $subject, $body, $template='default') {
     $this->SwiftMailer->smtpType = 'tls';
