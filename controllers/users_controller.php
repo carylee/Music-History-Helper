@@ -34,13 +34,14 @@ class UsersController extends AppController {
   function register() {
     if( !empty($this->data)) {
 
+      $userId = $this->_add($this->data);
+
       if( $this->data['User']['account'] == 0 ) {
-        $this->redirect(array('controller'=>'users', 'action'=>'pay', $this->data));
+        $this->redirect(array('controller'=>'users', 'action'=>'pay', $userId));
 
       }
       else {
 
-        $userId = $this->_add($this->data);
 
         // Add all songs to user's responses (empty)
         $this->_giveUserSongs( $userId, QUARTER, true );
@@ -48,8 +49,9 @@ class UsersController extends AppController {
     }
   }
 
-  function pay( $data ) {
-    debug($data);
+  function pay( $userId ) {
+    $user = $this->User->findById($userId);
+    debug($user);
   }
 
     
