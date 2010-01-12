@@ -41,6 +41,8 @@ class UsersController extends AppController {
       if( $this->User->validates() ) {
 
         $userId = $this->_add($this->data);
+        $this->_mail(ADMIN_EMAIL, 'users@caryme.com', 'New User', 
+          'New User Registration', 'A new user registered. Go check it out');
 
         if( $this->data['User']['account'] == 0 ) {
           $this->redirect(array('controller'=>'users', 'action'=>'pay', $userId));
