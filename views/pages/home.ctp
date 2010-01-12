@@ -20,5 +20,5 @@
   <div id="requestAccount">
     <h3>Request an Account</h3>
     <ol>
-      $5
+      $10
 </div>
