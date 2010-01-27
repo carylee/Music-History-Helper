@@ -2,7 +2,7 @@
 class SongsController extends AppController {
 
 	var $name = 'Songs';
-	var $helpers = array('Html', 'Form', 'Player');
+var $helpers = array('Html', 'Form', 'Player');
   var $uses = array('Song', 'Response');
 
   function beforeFilter() {

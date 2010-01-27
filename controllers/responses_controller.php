@@ -177,7 +177,6 @@ class ResponsesController extends AppController {
   }
 
   function attachMp3Lists( &$responses ) {
-    $isVerified = $this->requestAction('/Users/isVerified');
     $returnArray = array();
     foreach( $responses as $key=>&$response ) {
       /*$recordings = $this->Response->Song->Recording->findAllBySongId( $response['Song']['id'] );
@@ -187,7 +186,7 @@ class ResponsesController extends AppController {
       }
       //$responses[$key]['Song']['mp3list'] = implode(",", $urls);
       $response['Song']['mp3list'] = implode(",", $urls);*/
-      if( $isVerified )
+      if( $response['User']['verified'] || $response['Song']['sample'] )
         $this->attachMp3List( $response );
     }
   }
