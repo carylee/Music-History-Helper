@@ -74,7 +74,7 @@ blockquote, q {
 
 @font-face {
   font-family: "lucida grande";
-  src: url(http://musichistory.caryme.com/fonts/lucidagrande.eot);
+  src: url(http://musichistory.caryme.com/fonts/Lucidagrande.ttf) format("truetype");
 }
 
 /* General Style Info */
