@@ -72,6 +72,11 @@ blockquote, q {
 	padding:0;
 }
 
+@font-face {
+  font-face: "lucida grande";
+  src: url(http://www.caryme.com/files/fonts/lucidagrande.ttf) format("truetype");
+}
+
 /* General Style Info */
 body {
 	/*background: #003d4c;*/
