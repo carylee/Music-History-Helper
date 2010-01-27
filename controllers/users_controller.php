@@ -23,6 +23,16 @@ class UsersController extends AppController {
       return false;
   }
 
+  function isVerified() {
+    $userid = $this->Auth->user('id');
+    $verified = $this->User->find('first', array(
+      'conditions' => array('User.id' => $userid),
+      'fields' => array('User.verified'))
+    );
+    //pr($verified);
+    return $verified['User']['verified'];
+  }
+
   function login( $email='' ) {
     $this->set('email', $email );
     $this->layout = 'anonymous';
@@ -109,7 +119,7 @@ class UsersController extends AppController {
       if ($this->Auth->password($this->data['User']['old_password']) == $user['User']['password']) {
         if( $this->Auth->password($this->data['User']['confirm_password']) == 
             $this->data['User']['password']) {
-          pr($this->data);
+          //pr($this->data);
           $this->User->save($this->data);
         } else {
           echo 'Password don\'t match';
