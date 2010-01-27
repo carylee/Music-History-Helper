@@ -621,3 +621,8 @@ div#notes {
 form.narrow input {
   width: auto !important;
 }
+
+p.notverified a{
+  color:rgba(0,61,76,.4);
+  font-weight: normal;
+}
