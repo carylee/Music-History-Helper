@@ -1,0 +1,85 @@
+div#features {
+  width: 280px;
+  background: rgba(255,255,255,.6);
+  height: 450px;
+  float: left;
+  padding: 5px;
+}
+
+div#title {
+  height: 100px;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#title h2 {
+  font-size: 300%;
+  font-weight: bold;
+  margin:0px;
+  padding: 10px;
+}
+
+div#title h1 {
+  margin:0;
+  padding:0 0 10px 10px;
+  background: rgba(255,255,255,.4);
+  font-style: italic;
+}
+
+div#features h3 {
+  color: black;
+  font-size: 300%;
+  padding:0px;
+  /*text-align:center;*/
+}
+
+div#features h4 {
+  color: rgba(0,0,0,.8);
+  font-size: 160%;
+  line-height: 130%;
+  /*text-align:center;*/
+}
+
+div#features p {
+  line-height: 150%;
+  color: rgba(0,0,0,.7);
+  font-size: 100%;
+  margin: 10px 0;
+  /*text-align:center;*/
+}
+
+div#register a {
+  color: black;
+  font-size:150%;
+  display:block;
+  height:40px;
+  /*margin-left:auto;
+  margin-right:auto;*/
+  margin: 10px auto;
+  line-height:160%;
+  width: 120px;
+  text-align:center;
+  vertical-align:middle;
+  background: rgba(70,30,130, .5);
+  border: 1px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+}
+
+div#register a:hover{
+  /*color:white;*/
+  background: rgba(70,30,130,.7);
+}
+
+div#preview {
+  width: 600px;
+  height: auto;
+  float: left;
+}
+
+body {
+  background: rgb(8,105,140);
+}
+
