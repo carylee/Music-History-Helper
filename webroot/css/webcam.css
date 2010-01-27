@@ -1,0 +1,19 @@
+div#sidebyside {
+  width: 950px;
+  height: 500px;
+}
+
+div#generalinfo {
+  width: 270px;
+  float: left;
+}
+
+div#webcam {
+  width: 640px;
+  float: right;
+  clear:none;
+}
+
+div#webcam input {
+  width: auto;
+}

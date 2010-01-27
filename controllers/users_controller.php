@@ -175,6 +175,20 @@ class UsersController extends AppController {
 		}
 	}
 
+  function unlock($id = null ){
+    $jpeg_data = file_get_contents('php://input');
+    //pr($jpeg_data);
+    if(!empty($this->data) ) {
+      //logic
+      pr($this->data);
+    }
+    else {
+      $this->set('email', $this->Auth->user('username'));
+      $this->set('name', $this->Auth->user('name'));
+    }
+  }
+
+
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for User', true));
