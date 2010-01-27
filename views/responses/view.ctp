@@ -5,7 +5,7 @@ $player->addjs();
 <h2><?php  __('Notes for song');?></h2>
 <h3><?php  __($response['Song']['title']);?></h3>
 <h4><?php  __($response['Song']['composer']);?></h4>
-  <?php echo $player->embed($response['Song']['mp3list']); ?>
+  <?php echo $player->embed($response['Song']['mp3list'], 1, $response['User']['id']); ?>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genre'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
