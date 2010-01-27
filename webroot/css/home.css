@@ -1,7 +1,13 @@
+div#info {
+  width: 910px;
+  height: 380px;
+}
+
 div#features {
   width: 280px;
   background: rgba(255,255,255,.6);
-  height: 450px;
+  height: 405px;
+  overflow: hidden;
   float: left;
   padding: 5px;
 }
@@ -35,7 +41,7 @@ div#features h3 {
 
 div#features h4 {
   color: rgba(0,0,0,.8);
-  font-size: 160%;
+  font-size: 155%;
   line-height: 130%;
   /*text-align:center;*/
 }
@@ -43,7 +49,7 @@ div#features h4 {
 div#features p {
   line-height: 150%;
   color: rgba(0,0,0,.7);
-  font-size: 100%;
+  font-size: 90%;
   margin: 10px 0;
   /*text-align:center;*/
 }
@@ -74,12 +80,20 @@ div#register a:hover{
 }
 
 div#preview {
-  width: 600px;
+  margin-top: -20px;
+  width: 615px;
+  overflow:hidden;
   height: auto;
   float: left;
 }
 
+div#preview img{
+  margin:0;
+  padding:0;
+}
+
 body {
+  background: white;
   background: rgb(8,105,140);
 }
 
