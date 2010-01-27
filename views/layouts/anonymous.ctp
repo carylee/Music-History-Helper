@@ -5,7 +5,8 @@
 <title><?php echo $title_for_layout?></title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <!-- Include external files and scripts here (See HTML helper for more info.) -->
-<?php echo $html->css('mainstyle'); ?>
+<?php echo $html->css('mainstyle'); 
+echo $html->css('home'); ?>
 <?php echo $scripts_for_layout ?>
 </head>
 <body>
