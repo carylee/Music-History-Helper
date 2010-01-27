@@ -11,7 +11,7 @@ $player->addjs();
  		<legend><?php __('Edit Notes for Piece');?></legend>
     <h3><?php echo $response['Song']['title'];?></h3>
     <h4><?php echo $response['Song']['composer'];?></h4>
-    <?php echo $player->embed($response['Song']['mp3list']); ?>
+    <?php echo $player->embed($response['Song']['mp3list'], $response['Song']['id'], $response['User']['id']); ?>
 	<?php
 		echo $form->input('id');
   ?>

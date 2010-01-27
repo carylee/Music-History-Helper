@@ -82,7 +82,8 @@ class ResponsesController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
     $info = $this->Response->read(null, $id);
-    $this->attachMp3List( $info );
+    $songAvailable = $info['User']['verified'] || $info['Song']['sample'];
+    $this->attachMp3List( $info, $songAvailable);
 		$this->set('response', $info );
 	}
 
@@ -124,7 +125,8 @@ class ResponsesController extends AppController {
     //$this->Response->Behaviors->attach('Containable');
     //$this->Response->contain('Song', 'Song.Composer', 'Language', 'Period', 'Genre');
     $info = $this->Response->findById($id);
-    $this->attachMp3List( $info );
+    $songAvailable = $info['Song']['sample'] || $info['User']['verified'];
+    $this->attachMp3List( $info, $songAvailable );
 		$this->set('response', $info);
 		$this->set(compact('users','songs'));
 	}
@@ -187,21 +189,26 @@ class ResponsesController extends AppController {
       //$responses[$key]['Song']['mp3list'] = implode(",", $urls);
       $response['Song']['mp3list'] = implode(",", $urls);*/
       if( $response['User']['verified'] || $response['Song']['sample'] )
-        $this->attachMp3List( $response );
+        $this->attachMp3List( $response, true );
+      else
+        $this->attachMp3List( $response, false );
     }
   }
 
-  function attachMp3List( &$response ) {
-    $dirPath = "/media/nawm/";
-    $recordings = $this->Response->Song->Recording->find('all', array(
-      'conditions'=>array('Recording.song_id'=>$response['Song']['id'],),
-      'order'=>array('Recording.weight')));
-    $urls = array();
-    foreach( $recordings as $recording ) {
-      $urls[] = $dirPath . $recording['Recording']['url'];
+  function attachMp3List( &$response, $attachmp3s=true ) {
+    if($attachmp3s) {
+      $dirPath = "/media/nawm/";
+      $recordings = $this->Response->Song->Recording->find('all', array(
+        'conditions'=>array('Recording.song_id'=>$response['Song']['id'],),
+        'order'=>array('Recording.weight')));
+      $urls = array();
+      foreach( $recordings as $recording ) {
+        $urls[] = $dirPath . $recording['Recording']['url'];
+      }
+      $response['Song']['mp3list'] =  implode(",", $urls);
     }
-    $response['Song']['mp3list'] =  implode(",", $urls);
-    //$response['Song']['mp3list'] =  $urls;
+    else
+      $response['Song']['mp3list'] = 0;
   }
 }
 ?>

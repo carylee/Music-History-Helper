@@ -54,7 +54,7 @@ foreach ($responses as $response):
                 $response['Response']['id']),
           null, null, false); ?>
       <br />
-      <?php echo $player->embed($response['Song']['mp3list'], $response['Response']['id']); ?>
+      <?php echo $player->embed($response['Song']['mp3list'], $response['Response']['id'], $response['User']['id']); ?>
 		</td>
 		<td>
 <?php echo $html->link($response['Song']['composer'], 
