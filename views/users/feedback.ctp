@@ -7,3 +7,4 @@ echo $form->input('email', array('value'=>$email));
 echo $form->input('feedback', array('type'=>'textarea'));
 echo $form->end('Send');
 ?>
+</fieldset>
