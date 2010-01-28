@@ -191,7 +191,7 @@ class UsersController extends AppController {
           echo "Didn't move file.";
       }
       //logic
-      if(!empty($newname))
+      if(empty($newname))
         $newname = $this->data['User']['imageUrl'];
       $subject = 'Salute from ' . $this->data['User']['name'];
       $this->_mail(
