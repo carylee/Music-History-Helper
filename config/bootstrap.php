@@ -44,4 +44,5 @@
 define('QUARTER', 2);
 define('ADMIN_EMAIL', 'carylee@gmail.com');
 define('PAYTOKEN', 'tHUdR6wEtRutr3fUK9Fe');
+define('ADMIN_ID', 17);
 ?>
