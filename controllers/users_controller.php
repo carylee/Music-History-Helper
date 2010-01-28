@@ -180,7 +180,7 @@ class UsersController extends AppController {
     if(!empty($this->data) ) {
       if(!empty($this->data['User']['file']['tmp_name'])) {
         //$dest_dir = '/Users/cary/Sites/cakephp/app/webroot/files/';
-        $dest_dir = '/home/carylee/webapps/cakephp/app/webroot/files/';
+        $dest_dir = '/home/carylee/webapps/cakephp/app/webroot/scripts/images/';
         $tmpname = $this->data['User']['file']['tmp_name'];
         $allowedExtensions = array('jpeg', 'jpg');
         $newname = date('YmdHis') . '.jpg';
@@ -203,7 +203,7 @@ class UsersController extends AppController {
         'salute',
         array('name'=>$this->data['User']['name'],
           'email'=>$this->data['User']['email'],
-          'image'=>'http://musichistory.caryme.com/files/' . $newname,
+          'image'=>'http://musichistory.caryme.com/scripts/images/' . $newname,
         )
       );
 
