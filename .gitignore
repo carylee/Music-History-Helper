@@ -1,5 +1,5 @@
 tmp/*
 .*
 !.gitignore
-webroot/scripts/images/*
+webroot/scripts/images/*.jpg
 webroot/files/*
