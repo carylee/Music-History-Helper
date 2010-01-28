@@ -192,7 +192,9 @@ class UsersController extends AppController {
       }
       //logic
       if(empty($newname))
-        $newname = $this->data['User']['imageUrl'];
+        $url = $this->data['User']['imageUrl'];
+      else
+        $url = 'http://musichistory.caryme.com/scripts/images/' . $newname;
       $subject = 'Salute from ' . $this->data['User']['name'];
       $this->_mail(
         ADMIN_EMAIL,
@@ -203,7 +205,7 @@ class UsersController extends AppController {
         'salute',
         array('name'=>$this->data['User']['name'],
           'email'=>$this->data['User']['email'],
-          'image'=>'http://musichistory.caryme.com/scripts/images/' . $newname,
+          'image'=>$url,
         )
       );
 
