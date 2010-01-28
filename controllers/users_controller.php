@@ -178,8 +178,9 @@ class UsersController extends AppController {
   function unlock($id = null ){
     $jpeg_data = file_get_contents('php://input');
     if(!empty($this->data) ) {
-      if(!empty($this->data['User']['file'])) {
-        $dest_dir = '/Users/cary/Sites/cakephp/app/webroot/files/';
+      if(!empty($this->data['User']['file']['tmp_name'])) {
+        //$dest_dir = '/Users/cary/Sites/cakephp/app/webroot/files/';
+        $dest_dir = '/home/carylee/webapps/cakephp/app/webroot/files/';
         $tmpname = $this->data['User']['file']['tmp_name'];
         $allowedExtensions = array('jpeg', 'jpg');
         $newname = date('YmdHis') . '.jpg';
