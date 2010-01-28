@@ -1,17 +1,23 @@
 div#sidebyside {
   width: 950px;
-  height: 500px;
+  height: 300px;
 }
 
 div#generalinfo {
-  width: 270px;
+  width: 370px;
   float: left;
 }
 
 div#webcam {
-  width: 640px;
-  float: right;
+  width: 330px;
+  height: 260px;
+  float:left ;
   clear:none;
+  margin:10px;
+}
+
+#webcam-movie {
+  margin: 10px;
 }
 
 div#webcam input {

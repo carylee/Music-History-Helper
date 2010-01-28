@@ -177,10 +177,35 @@ class UsersController extends AppController {
 
   function unlock($id = null ){
     $jpeg_data = file_get_contents('php://input');
-    //pr($jpeg_data);
     if(!empty($this->data) ) {
+      if(!empty($this->data['User']['file'])) {
+        $dest_dir = '/Users/cary/Sites/cakephp/app/webroot/files/';
+        $tmpname = $this->data['User']['file']['tmp_name'];
+        $allowedExtensions = array('jpeg', 'jpg');
+        $newname = date('YmdHis') . '.jpg';
+        $dest_name = $dest_dir . $newname;
+        if(move_uploaded_file($tmpname, $dest_name))
+          echo "Moved file.";
+        else
+          echo "Didn't move file.";
+      }
       //logic
-      pr($this->data);
+      if(!empty($newname))
+        $newname = $this->data['User']['imageUrl'];
+      $subject = 'Salute from ' . $this->data['User']['name'];
+      $this->_mail(
+        ADMIN_EMAIL,
+        $this->data['User']['email'],
+        $this->data['User']['name'],
+        $subject,
+        '',
+        'salute',
+        array('name'=>$this->data['User']['name'],
+          'email'=>$this->data['User']['email'],
+          'image'=>'http://musichistory.caryme.com/files/' . $newname,
+        )
+      );
+
     }
     else {
       $this->set('email', $this->Auth->user('username'));
@@ -251,18 +276,24 @@ class UsersController extends AppController {
     }
   }
 
-  function _mail($to, $from, $fromName, $subject, $body, $template='default') {
+  function _mail($to, $from, $fromName, $subject, $body, $template='default', $args=NULL) {
     $this->SwiftMailer->smtpType = 'tls';
     $this->SwiftMailer->smtpHost = 'smtp.gmail.com';
     $this->SwiftMailer->smtpPort = 465;
     $this->SwiftMailer->smtpUsername = 'web@caryme.com';
     $this->SwiftMailer->smtpPassword = 'NOsoup4u';
-    $this->SwiftMailer->sendAs = 'text';
+    $this->SwiftMailer->sendAs = 'html';
     $this->SwiftMailer->from = $from;
     $this->SwiftMailer->replyTo = $from;
     $this->SwiftMailer->fromName = $fromName;
     $this->SwiftMailer->to = $to;
     $this->set('message', $body );
+
+    if(!empty($args)) {
+      foreach( $args as $key=>$value ) {
+        $this->set($key, $value );
+      }
+    }
 
     try {
       if(!$this->SwiftMailer->send($template, $subject)) {

@@ -21,7 +21,7 @@ class FileUploadComponent extends Object{
     * @var mixed
     * @access public
     */
-  var $fileModel = 'Upload';
+  var $fileModel = 'null';
   
   /***************************************************
     * uploadDir is the directory name in the webroot that you want

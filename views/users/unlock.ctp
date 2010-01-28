@@ -13,12 +13,11 @@ echo $form->create(null, array(
 ?>
 <div id="sidebyside">
 <div id="generalinfo">
-<?php
-echo $form->input('name', array('value'=>$name));
-echo $form->input('email', array('value'=>$email));
-echo $form->input('submittedfile', array('between'=>'<br>', 'type'=>'file'));
-echo $form->input('imageUrl');
-?>
+<?php echo $form->input('name', array('value'=>$name)); ?>
+<?php echo $form->input('email', array('value'=>$email)); ?>
+<?php echo $form->input('file', array('between'=>'<br>', 'type'=>'file', 'size'=>'17'));?>
+<p class='helper'>jpeg images only, not needed if using webcam</p>
+<?php echo $form->input('imageUrl');?>
 </div>
 <?php
 $script = <<<EOD
@@ -31,19 +30,20 @@ echo $javascript->codeBlock($script);
 ?>
 <div id="webcam">
 <?php
-echo $javascript->codeBlock('document.write( webcam.get_html(640, 480) );');
+echo $javascript->codeBlock('document.write( webcam.get_html(320, 240, 640, 480) );');
 ?>
-  <input type=button value="Configure..." onClick="webcam.configure()">
   <input type=button value="Take Snapshot" onClick="webcam.snap()">
-  <input type=button value="Reset" onclick="webcam.reset()">
+  <input type=button value="Configure..." onClick="webcam.configure()">
+  <!--<input type=button value="Reset" onclick="webcam.reset()">-->
 </div>
 </div>
 <?php
 $serverresponse = <<<EOD
 webcam.set_hook( 'onComplete', 'my_callback_function' );
 function my_callback_function(response) {
-  document.unlockform.data[User][imageUrl] = response;
-  document.getElementById('UserImageUrl') = response;
+  document.getElementById('UserImageUrl').value = response;
+  webcam.reset();
+  
 }
 EOD;
 echo $javascript->codeBlock($serverresponse);
