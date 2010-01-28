@@ -16,9 +16,11 @@ class UsersController extends AppController {
   }
 
   function isAuthorized() {
-    if($this->Auth->user('id') == 17) {
-      return true;
-    } 
+    if(is_numeric($this->Auth->user('id'))) {
+      if($this->Auth->user('id') == ADMIN_ID) {
+        return true;
+      } 
+    }
     else
       return false;
   }
