@@ -7,7 +7,7 @@ class UsersController extends AppController {
   var $components = array('Email', 'SwiftMailer');
 
   function beforeFilter() {
-    $this->Auth->allow('pay', 'register', 'login', 'feedback', 'requestAccount');
+    $this->Auth->allow('pay', 'register', 'login', 'feedback', 'requestAccount', 'unlock');
     $this->Auth->authorize = 'controller';
     //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
@@ -71,6 +71,10 @@ class UsersController extends AppController {
 
   function pay( $userId ) {
     $user = $this->User->findById($userId);
+  }
+
+  function _emailExists( $email ) {
+    return $this->User->find('count', array('conditions'=> array('User.username'=>$email)));
   }
 
     
@@ -208,6 +212,7 @@ class UsersController extends AppController {
         array('name'=>$this->data['User']['name'],
           'email'=>$this->data['User']['email'],
           'image'=>$url,
+          'id'=>$this->Auth->user('id'),
         )
       );
 
