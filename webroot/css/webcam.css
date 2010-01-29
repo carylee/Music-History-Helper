@@ -1,25 +1,45 @@
 div#sidebyside {
-  width: 950px;
-  height: 300px;
+  width: 850px;
+  height: 380px;
+  margin:0px;
 }
 
 div#generalinfo {
+  clear:none;
   width: 370px;
   float: left;
+  margin: 0px;
+  margin-left: 10px;
+  padding: 0px;
 }
 
 div#webcam {
   width: 330px;
-  height: 260px;
+  height: 380px;
   float:left ;
   clear:none;
-  margin:10px;
+  margin:0px;
+  padding:0px;
 }
 
-#webcam-movie {
-  margin: 10px;
+div.submit input {
+  display:block;
+}
+
+div#or {
+  clear: none;
+  width: auto;
+  float:left;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+object#webcam-movie {
+  padding: 10px;
 }
 
 div#webcam input {
   width: auto;
+  margin-top: 5px;
 }
