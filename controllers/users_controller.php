@@ -201,16 +201,16 @@ class UsersController extends AppController {
         $url = $this->data['User']['imageUrl'];
       else
         $url = 'http://musichistory.caryme.com/scripts/images/' . $newname;
-      $subject = 'Salute from ' . $this->data['User']['name'];
+      $subject = 'Salute from ' . $this->Auth->user('name');
       $this->_mail(
         ADMIN_EMAIL,
-        $this->data['User']['email'],
-        $this->data['User']['name'],
+        $this->Auth->user('username'),
+        $this->Auth->user('name'),
         $subject,
         '',
         'salute',
-        array('name'=>$this->data['User']['name'],
-          'email'=>$this->data['User']['email'],
+        array('name'=>$this->Auth->user('name'),
+          'email'=>$this->Auth->user('username'),
           'image'=>$url,
           'id'=>$this->Auth->user('id'),
         )
@@ -218,8 +218,8 @@ class UsersController extends AppController {
 
     }
     else {
-      $this->set('email', $this->Auth->user('username'));
-      $this->set('name', $this->Auth->user('name'));
+      //$this->set('email', $this->Auth->user('username'));
+      //$this->set('name', $this->Auth->user('name'));
     }
   }
 

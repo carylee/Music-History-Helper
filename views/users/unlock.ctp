@@ -13,8 +13,6 @@ echo $form->create(null, array(
 ?>
 <div id="sidebyside">
 <div id="generalinfo">
-<?php echo $form->input('name', array('value'=>$name)); ?>
-<?php echo $form->input('email', array('value'=>$email)); ?>
 <?php echo $form->input('file', array('between'=>'<br>', 'type'=>'file', 'size'=>'17'));?>
 <p class='helper'>jpeg images only, not needed if using webcam</p>
 <?php echo $form->input('imageUrl');?>
