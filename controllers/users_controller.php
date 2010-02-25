@@ -9,9 +9,10 @@ class UsersController extends AppController {
   function beforeFilter() {
     $this->Auth->allow('pay', 'register', 'login', 'feedback', 'requestAccount', 'unlock');
     $this->Auth->authorize = 'controller';
-    $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
-    //$this->Auth->autoRedirect = true;
+   // $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
+    $this->Auth->autoRedirect = true;
     //$this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
+    $this->Auth->loginRedirect = '/users/login';
     $this->Auth->authError = 'You must be logged in to do that.';
     //$this->Auth->logoutRedirect = array('controller'=>'users', 'action'=>'');
   }
@@ -39,7 +40,7 @@ class UsersController extends AppController {
   function login( $email='' ) {
     $this->set('email', $email );
     //$this->layout = 'anonymous';
-    $this->redirect(array('controller' => 'responses', 'action'=>'index'));
+    //$this->redirect(array('controller' => 'responses', 'action'=>'index'));
   }
 
   function logout() {
@@ -73,7 +74,7 @@ class UsersController extends AppController {
   function pay( $userId ) {
     $user = $this->User->findById($userId);
   }
-˝
+  
   function _emailExists( $email ) {
     return $this->User->find('count', array('conditions'=> array('User.username'=>$email)));
   }
