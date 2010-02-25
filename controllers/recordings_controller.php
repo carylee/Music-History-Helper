@@ -8,7 +8,7 @@ class RecordingsController extends AppController {
   }
 
   function isAuthorized() {
-    return ($this->Session->read('Auth.User.id') == 17);
+    return ($this->Session->read('Auth.User.id') == ADMIN_ID);
   }
 
 }
