@@ -7,12 +7,12 @@
 		echo $form->input('username', array('label'=>'Email address'));
 		echo $form->input('password', array('value'=>''));
 		//echo $form->input('password_confirm', array('type'=>'password'));
-    echo $form->input('account', array(
+    /*echo $form->input('account', array(
       'legend' => 'Would you like to register a full account?',
-      'options' => array('Yes please, here\'s $10', 'Not yet, just a trial for now'),
+      'options' => array('Yes please, take me to the payment page', 'Not yet, just a trial for now'),
       'type' => 'radio',
       'value' => 0,
-    ));
+    ));*/
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>
