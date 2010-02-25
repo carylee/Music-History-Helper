@@ -73,7 +73,7 @@ class UsersController extends AppController {
   function pay( $userId ) {
     $user = $this->User->findById($userId);
   }
-
+˝
   function _emailExists( $email ) {
     return $this->User->find('count', array('conditions'=> array('User.username'=>$email)));
   }
