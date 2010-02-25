@@ -18,7 +18,7 @@ show up on all of your views, include it here -->
       <ul>
         <li><?php echo $html->link('Home', '/');?></li>
         <li><?php echo $html->link('Register', array('controller'=>'users', 'action'=>'register'));?></li>
-        <li><?php echo $html->link('Login', array('controller'=>'users', 'action'=>'login'));?></li>
+        <li><?php echo $html->link('Login', array('controller'=>'responses', 'action'=>'index'));?></li>
         <li><?php echo $html->link('Contact', array('controller'=>'users', 'action'=>'feedback'));?></li>
       </ul>
     </div>
