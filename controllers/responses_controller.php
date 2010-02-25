@@ -25,6 +25,9 @@ class ResponsesController extends AppController {
     if(!empty($this->passedArgs['genre'])) {
       $conditions['genre LIKE'] = $this->passedArgs['genre'];
     }
+    if(!empty($this->passedArgs['function'])) {
+      $conditions['function LIKE'] = $this->passedArgs['function'];
+    }
     if(!empty($this->passedArgs['composer'])) {
       $conditions['Song.composer'] = $this->passedArgs['composer'];
     }
@@ -52,7 +55,7 @@ class ResponsesController extends AppController {
 	}
 
   function filterRemoveLinks() {
-    $filterTypes = array('composer', 'genre', 'instrumentation', 'language', 'period', 'texture');
+    $filterTypes = array('composer', 'genre', 'instrumentation', 'language', 'period', 'texture', 'function');
     $namedArguments = array();
     foreach($this->passedArgs as $filterType=>$filterName ) {
       if(in_array($filterType, $filterTypes))
