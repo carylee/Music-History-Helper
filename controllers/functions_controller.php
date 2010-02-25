@@ -1,7 +1,7 @@
 <?php
-class functionsController extends AppController {
+class FunctionsController extends AppController {
 
-	var $name = 'functions';
+	var $name = 'Functions';
 	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Player');
   var $uses = array('Response');
 
