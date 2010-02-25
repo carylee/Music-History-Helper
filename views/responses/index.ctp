@@ -33,6 +33,7 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('language');?></th>
 	<th><?php echo $paginator->sort('instrumentation');?></th>
 	<th><?php echo $paginator->sort('texture');?></th>
+	<th><?php echo $paginator->sort('function')?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -77,6 +78,9 @@ null, null, false); ?>
 		<td>
 			<?php echo $html->link($response['Response']['texture'], array_merge($this->passedArgs, array('texture'=>$response['Response']['texture']))); ?>
 		</td>
+		<td>
+		  <?php echo $html->link($response['Response']['function'], array_merge($this->passedArgs, array('texture'=>$response['Response']['function']))); ?>
+	  </td>
 		<td class="actions">
 			<?php echo $html->link(__('Details', true), array('action' => 'view', $response['Response']['id'])); ?>
 			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $response['Response']['id'])); ?>

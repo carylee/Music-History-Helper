@@ -36,6 +36,10 @@ $player->addjs();
       <label for="Texture">Texture</label>
       <?php echo $ajax->autoComplete('texture', '/textures/autoComplete'); ?>
     </div>
+    <div class="input text">
+      <label for="Function">Function</label>
+      <?php echo $ajax->autoComplete('function', '/functions/autoComplete'); ?>
+    </div>
   </div>
   <div id="notes">
 <?php
