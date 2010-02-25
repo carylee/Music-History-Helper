@@ -10,6 +10,7 @@ class UsersController extends AppController {
     $this->Auth->allow('pay', 'register', 'login', 'feedback', 'requestAccount', 'unlock');
     $this->Auth->authorize = 'controller';
     //$this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
+    $this->Auth->autoRedirect = true;
     $this->Auth->loginRedirect = array('controller'=>'responses', 'action'=>'index');
     $this->Auth->authError = 'You must be logged in to do that.';
     //$this->Auth->logoutRedirect = array('controller'=>'users', 'action'=>'login');
