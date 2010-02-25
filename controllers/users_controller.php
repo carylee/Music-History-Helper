@@ -47,7 +47,8 @@ class UsersController extends AppController {
     $this->redirect($this->Auth->logout());
   }
 
-  function register() {
+  function register( $op='try') {
+    echo $op;
     $this->layout = 'anonymous';
     if( !empty($this->data)) {
       $this->User->set( $this->data );
@@ -58,7 +59,8 @@ class UsersController extends AppController {
         $this->_mail(ADMIN_EMAIL, 'users@caryme.com', 'New User', 
           'New User Registration', 'A new user registered. Go check it out');
 
-        if( $this->data['User']['account'] == 0 ) {
+        //if( $this->data['User']['account'] == 0 ) {
+        if( $op == 'buy' ) {
           $this->redirect(array('controller'=>'users', 'action'=>'pay', $userId));
         }
 
