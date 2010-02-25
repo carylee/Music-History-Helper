@@ -57,11 +57,12 @@ div#features p {
 div#register a {
   color: black;
   font-size:150%;
-  display:block;
+  display:inline;
+	padding: 5px;
   height:40px;
   /*margin-left:auto;
   margin-right:auto;*/
-  margin: 10px auto;
+  margin: 10px;
   line-height:160%;
   width: 120px;
   text-align:center;

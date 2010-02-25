@@ -11,7 +11,8 @@ echo $html->css('home.css'); ?>
     <!--<h4>Take structured notes on pieces. When it comes time to study, use those notes to sort and filter them.</h4>-->
     <p>With the music history helper, your notes are more than just words on a page. They are tags that allow you to sort, filter, and navigate historical music.</p>
   <div id="register">
-<?php echo $html->link('Register', array('controller'=>'users', 'action'=>'register')); ?>
+<?php echo $html->link('Try', array('controller'=>'users', 'action'=>'register')); ?>
+<?php echo $html->link('Buy ($5)', array('controller'=>'users', 'action'=>'register')); ?>
   </div>
   </div>
   <div id="preview">

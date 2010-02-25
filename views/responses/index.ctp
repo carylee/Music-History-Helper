@@ -79,7 +79,7 @@ null, null, false); ?>
 			<?php echo $html->link($response['Response']['texture'], array_merge($this->passedArgs, array('texture'=>$response['Response']['texture']))); ?>
 		</td>
 		<td>
-		  <?php echo $html->link($response['Response']['function'], array_merge($this->passedArgs, array('texture'=>$response['Response']['function']))); ?>
+		  <?php echo $html->link($response['Response']['function'], array_merge($this->passedArgs, array('function'=>$response['Response']['function']))); ?>
 	  </td>
 		<td class="actions">
 			<?php echo $html->link(__('Details', true), array('action' => 'view', $response['Response']['id'])); ?>
