@@ -6,6 +6,7 @@
 		echo $form->input('name');
 		echo $form->input('username', array('label'=>'Email address'));
 		echo $form->input('password', array('value'=>''));
+		echo $form->input('account', array('type'=>'hidden', 'value'=>$op));
 		//echo $form->input('password_confirm', array('type'=>'password'));
     /*echo $form->input('account', array(
       'legend' => 'Would you like to register a full account?',
