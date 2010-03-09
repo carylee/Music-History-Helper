@@ -23,16 +23,16 @@ class ResponsesController extends AppController {
 
     // Filters
     if(!empty($this->passedArgs['genre'])) {
-      $conditions['genre LIKE'] = $this->passedArgs['genre'];
+      $conditions['genre LIKE'] = '%' . $this->passedArgs['genre'] . '%';
     }
     if(!empty($this->passedArgs['function'])) {
-      $conditions['function LIKE'] = $this->passedArgs['function'];
+      $conditions['function LIKE'] = '%' . $this->passedArgs['function'] . '%';
     }
     if(!empty($this->passedArgs['composer'])) {
       $conditions['Song.composer'] = $this->passedArgs['composer'];
     }
     if(!empty($this->passedArgs['period'])) {
-      $conditions['period LIKE'] = $this->passedArgs['period'];
+      $conditions['period LIKE'] = '%' . $this->passedArgs['period'] . '%';
     }
     if(!empty($this->passedArgs['language'])) {
       $conditions['language LIKE'] = $this->passedArgs['language'];
