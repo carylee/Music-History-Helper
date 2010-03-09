@@ -213,5 +213,14 @@ class ResponsesController extends AppController {
     else
       $response['Song']['mp3list'] = 0;
   }
+  function quiz() {
+    $conditions = array( 'Response.user_id' => $this->Session->read('Auth.User.id'), 
+                        'quarter'=>QUARTER );
+    // Quarters
+    $responses = $this->Response->find('all', array('conditions'=>$conditions));
+    $response = $responses[array_rand($responses)];
+    $this->attachMp3List( $response );
+    $this->set('response', $response );
+  }
 }
 ?>
