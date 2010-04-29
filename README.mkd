@@ -5,6 +5,7 @@ I intended to launch for the class by a few weeks into winter quarter, but I got
 Here's a description from an email I sent to beta testers:
 
 The application allows you to
+-----------------------------
 * Take structured notes on listening assignments (from the NAWM)
 * Keep notes and recordings all in one place, accessible from any computer
 * Sort pieces by name, NAWM number, genre, language, texture, instrumentation, and period
