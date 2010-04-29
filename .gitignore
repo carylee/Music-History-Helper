@@ -3,3 +3,4 @@ tmp/*
 !.gitignore
 webroot/scripts/images/*.jpg
 webroot/files/*
+config/database.php
