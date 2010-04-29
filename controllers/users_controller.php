@@ -260,7 +260,7 @@ class UsersController extends AppController {
         'timeout'=>'30',
         'host'=>'ssl://smtp.gmail.com',
         'username'=>'web@caryme.com',
-        'password'=>'NOsoup4u'
+        'password'=>'Cqv7wG>djVhc'
       );
       $this->Email->delivery = 'debug';
       pr($this->Session->read('Message.email'));
@@ -296,7 +296,7 @@ class UsersController extends AppController {
     $this->SwiftMailer->smtpHost = 'smtp.gmail.com';
     $this->SwiftMailer->smtpPort = 465;
     $this->SwiftMailer->smtpUsername = 'web@caryme.com';
-    $this->SwiftMailer->smtpPassword = 'NOsoup4u';
+    $this->SwiftMailer->smtpPassword = 'Cqv7wG>djVhc';
     $this->SwiftMailer->sendAs = 'html';
     $this->SwiftMailer->from = $from;
     $this->SwiftMailer->replyTo = $from;
