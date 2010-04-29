@@ -1,0 +1,13 @@
+I worked on this program largely on winter break of 2009, frustrated by the lack of effective tools for studying for my drop-the-needle music history exam.  Knowing that I would have two more such exams for the same class series, I developed this application.
+
+I intended to launch for the class by a few weeks into winter quarter, but I got swamped with work.  I made progress, but wasn't able to meet my goals.  I do use the program for my own studying and it helped for winter quarter (and will hopefully be helpful this quarter as well).
+
+Here's a description from an email I sent to beta testers:
+
+The application allows you to
+* Take structured notes on listening assignments (from the NAWM)
+* Keep notes and recordings all in one place, accessible from any computer
+* Sort pieces by name, NAWM number, genre, language, texture, instrumentation, and period
+* Filter pieces by any of the above criteria
+
+At a conceptual level, the application helps you take useful notes, then study by applying your notes to understand relationships between the pieces.
