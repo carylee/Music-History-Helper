@@ -41,10 +41,10 @@ $i = 0;
 foreach ($responses as $response):
 	$class = null;
 	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
+		$class = 'altrow';
 	}
 ?>
-	<tr<?php echo $class;?>>
+	<tr class="info <?php echo $class;?>">
 		<td>
 			<?php echo $response['Song']['nawm']; ?>
 		</td>
@@ -87,6 +87,7 @@ null, null, false); ?>
 			<?php //echo $html->link(__('Delete', true), array('action' => 'delete', $response['Response']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $response['Response']['id'])); ?>
 		</td>
 	</tr>
+  <tr class="notes <?php echo $class?>"><td colspan=10><?php echo $response['Response']['notes']?></td></tr>
 <?php endforeach; ?>
 </table>
 </div>
